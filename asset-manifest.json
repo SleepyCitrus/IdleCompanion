@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.8b606a98.css",
-    "main.js": "/static/js/main.c50287f0.js",
-    "static/js/453.63b62d93.chunk.js": "/static/js/453.63b62d93.chunk.js",
-    "index.html": "/index.html",
-    "main.8b606a98.css.map": "/static/css/main.8b606a98.css.map",
-    "main.c50287f0.js.map": "/static/js/main.c50287f0.js.map",
-    "453.63b62d93.chunk.js.map": "/static/js/453.63b62d93.chunk.js.map"
+    "main.css": "/idle-clans-market/static/css/main.8b606a98.css",
+    "main.js": "/idle-clans-market/static/js/main.39bf474f.js",
+    "static/js/453.63b62d93.chunk.js": "/idle-clans-market/static/js/453.63b62d93.chunk.js",
+    "index.html": "/idle-clans-market/index.html",
+    "main.8b606a98.css.map": "/idle-clans-market/static/css/main.8b606a98.css.map",
+    "main.39bf474f.js.map": "/idle-clans-market/static/js/main.39bf474f.js.map",
+    "453.63b62d93.chunk.js.map": "/idle-clans-market/static/js/453.63b62d93.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8b606a98.css",
-    "static/js/main.c50287f0.js"
+    "static/js/main.39bf474f.js"
   ]
 }
