@@ -1,8 +1,12 @@
-.App {
+.app {
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   flex-direction: column;
+}
+
+.title {
+  padding-bottom: 15px;
 }

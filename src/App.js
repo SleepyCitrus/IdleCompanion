@@ -21,9 +21,12 @@ const theme = createTheme({
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <ThemeProvider theme={theme}>
-        <div>CONTAINED</div>
+        <div className="title">
+          <h2>MARKETPLACE</h2>
+          <span>Made by VexingCitrus</span>
+        </div>
         <Market />
       </ThemeProvider>
     </div>

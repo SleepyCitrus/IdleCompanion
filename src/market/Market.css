@@ -1,3 +1,11 @@
-.Market {
+.market {
   display: flex;
+  padding: 10px;
+  gap: 10px;
+  flex-wrap: wrap;
+  max-width: 90%;
+}
+
+.priceButton {
+  flex: 30%;
 }
