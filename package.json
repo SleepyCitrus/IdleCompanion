@@ -1,7 +1,7 @@
 {
   "name": "idle-clans-market",
   "version": "0.1.0",
-  "homepage": "https://vincentjiangs.github.io/idle-clans-market/",
+  "homepage": "https://vincentjiangs.github.io/IdleClansMarket/",
   "private": true,
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
