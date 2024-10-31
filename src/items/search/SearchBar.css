@@ -1,3 +1,4 @@
 .search-bar {
-  width: 410px;
+  max-width: 410px;
+  width: 100%;
 }

@@ -1,10 +1,75 @@
+/* Fonts */
+@font-face {
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Avenir Next"),
+    url("./fonts/avenir-next/avenir-next-regular.woff") format("woff"),
+    url("./fonts/avenir-next/avenir-next-regular.ttf")
+      format("truetype"),
+    url("./fonts/avenir-next/avenir-next-regular.svg") format("svg"),
+    url("./fonts/avenir-next/avenir-next-regular.eot")
+      format("embedded-opentype");
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Avenir Next"),
+    url("./fonts/avenir-next/avenir-next-medium.woff") format("woff"),
+    url("./fonts/avenir-next/avenir-next-medium.ttf")
+      format("truetype"),
+    url("./fonts/avenir-next/avenir-next-medium.svg") format("svg"),
+    url("./fonts/avenir-next/avenir-next-medium.eot")
+      format("embedded-opentype");
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Avenir Next"),
+    url("./fonts/avenir-next/avenir-next-demi.woff") format("woff"),
+    url("./fonts/avenir-next/avenir-next-demi.ttf") format("truetype"),
+    url("./fonts/avenir-next/avenir-next-demi.svg") format("svg"),
+    url("./fonts/avenir-next/avenir-next-demi.eot")
+      format("embedded-opentype");
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Avenir Next"),
+    url("./fonts/avenir-next/avenir-next-bold.woff") format("woff"),
+    url("./fonts/avenir-next/avenir-next-bold.ttf") format("truetype"),
+    url("./fonts/avenir-next/avenir-next-bold.svg") format("svg"),
+    url("./fonts/avenir-next/avenir-next-bold.eot")
+      format("embedded-opentype");
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 800;
+  src: local("Avenir Next"),
+    url("./fonts/avenir-next/avenir-next-heavy.woff") format("woff"),
+    url("./fonts/avenir-next/avenir-next-heavy.ttf") format("truetype"),
+    url("./fonts/avenir-next/avenir-next-heavy.svg") format("svg"),
+    url("./fonts/avenir-next/avenir-next-heavy.eot")
+      format("embedded-opentype");
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Fira Code",
-    "Fira Sans", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-    "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: "Avenir Next", -apple-system, BlinkMacSystemFont,
+    "Fira Code", "Fira Sans", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-width: 480px;
+  width: 100%;
 }
 
 code {

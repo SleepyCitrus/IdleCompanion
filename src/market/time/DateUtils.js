@@ -13,6 +13,7 @@ var monthsNames = [
   "December",
 ];
 
+// Oct 30, 2024, 00:00
 export function getFullDate(date) {
   var year = date.getFullYear();
   var month = monthsNames[date.getMonth()];
@@ -25,9 +26,29 @@ export function getFullDate(date) {
   )}:${String(minutes).padStart(2, "0")}`;
 }
 
+// Oct 24
 export function getCalendarDate(date) {
+  var month = monthsNames[date.getMonth()];
+  var day = date.getDate();
+  return `${month.substring(0, 3)} ${day}`;
+}
+
+/**
+ * Either "Oct 30, 2024" or
+ *
+ * Oct 30
+ * 2024
+ *
+ * @param {*} date
+ * @param {*} yearNewLine
+ * @returns
+ */
+export function getCalendarDateWithYear(date, yearNewLine = false) {
   var year = date.getFullYear();
   var month = monthsNames[date.getMonth()];
   var day = date.getDate();
-  return `${month} ${day} ${year}`;
+  if (yearNewLine) {
+    return `${month} ${day}\n${year}`;
+  }
+  return `${month} ${day}, ${year}`;
 }

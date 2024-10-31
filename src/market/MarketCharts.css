@@ -1,0 +1,13 @@
+.marketCharts {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+.chartOptions {
+  display: flex;
+  flex: 50%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

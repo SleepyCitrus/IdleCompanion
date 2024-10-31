@@ -1,13 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { themeOptions } from "./Theme";
+import { CssBaseline } from "@mui/material";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const theme = createTheme(themeOptions);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* <Typography fontFamily={fontFamily} color="common.white"> */}
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <App />
+    </ThemeProvider>
+    {/* </Typography> */}
   </React.StrictMode>
 );
 
