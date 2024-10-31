@@ -6,7 +6,7 @@ import React, {
 } from "react";
 import { ItemDatabase } from "./ItemDatabase";
 
-const DatabaseContext = createContext(undefined);
+const DatabaseContext = createContext({});
 
 export const ItemDatabaseProvider = ({ children }) => {
   const [itemDatabase, setItemDatabase] = useState(new ItemDatabase());
@@ -24,6 +24,6 @@ export const ItemDatabaseProvider = ({ children }) => {
   );
 };
 
-export function useItemDatabase() {
+export function useItemDatabase(): ItemDatabase {
   return useContext(DatabaseContext)["itemDatabase"];
 }

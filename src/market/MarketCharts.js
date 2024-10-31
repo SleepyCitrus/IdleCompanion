@@ -4,7 +4,7 @@ import PriceChart from "./charts/PriceChart";
 import { useEffect, useState } from "react";
 import TimeSelect from "./time/TimeSelect";
 import Card from "../card/Card";
-import { useItemDatabase } from "../items/ItemDatabaseProvider";
+import { useItemDatabase } from "../items/ItemDatabaseProvider.tsx";
 
 const timeRangeOptions = ["1d", "7d", "30d", "1y"];
 
@@ -12,25 +12,25 @@ export default function MarketCharts() {
   const [selectedItem, setSelectedItem] = useState("");
   const [timeRange, setTimeRange] = useState("7d");
   const [allItems, setAllItems] = useState([]);
-  const [loaded, setLoaded] = useState(false);
+  const [loading, setLoading] = useState(true);
   const itemDB = useItemDatabase();
 
   useEffect(() => {
-    console.log("changed all items", allItems);
-
-    if (allItems.length === 0) {
-      setAllItems(itemDB.getAllItemNames());
-      setLoaded(true);
-    } else {
-      // setLoaded(false);
-    }
-    console.log(loaded);
-  });
+    const populateItems = setInterval(() => {
+      console.log("Waiting for items to populate...");
+      if (itemDB.isPopulated()) {
+        console.log("Items populated!", itemDB.namesToIds);
+        setAllItems(itemDB.getAllItemNames());
+        setLoading(false);
+        clearInterval(populateItems);
+      }
+    }, 1000);
+  }, []);
 
   return (
     <Card>
-      <div hidden={loaded}>Loading...</div>
-      <div hidden={!loaded}>
+      <div hidden={!loading}>Loading...</div>
+      <div hidden={loading}>
         <div className="marketCharts">
           <div className="chartOptions">
             <SearchBar

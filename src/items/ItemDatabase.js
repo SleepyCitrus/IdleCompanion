@@ -72,6 +72,13 @@ export class ItemDatabase {
     }
   }
 
+  isPopulated() {
+    return (
+      Object.keys(this.idsToNames).length > 0 &&
+      Object.keys(this.namesToIds).length > 0
+    );
+  }
+
   refreshItemCache() {
     return getItemsToIds()
       .then((data) => {

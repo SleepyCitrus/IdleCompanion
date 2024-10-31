@@ -1,5 +1,5 @@
 import "./App.css";
-import { ItemDatabaseProvider } from "./items/ItemDatabaseProvider";
+import { ItemDatabaseProvider } from "./items/ItemDatabaseProvider.tsx";
 import MarketPage from "./market/MarketPage";
 
 function App() {

@@ -6,7 +6,7 @@ import {
   getCalendarDateWithYear,
   getFullDate,
 } from "../time/DateUtils";
-import { useItemDatabase } from "../../items/ItemDatabaseProvider";
+import { useItemDatabase } from "../../items/ItemDatabaseProvider.tsx";
 
 const configuration = {
   highestSellPrice: { label: "High Price", color: "green" },

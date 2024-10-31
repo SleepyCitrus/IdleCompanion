@@ -1,12 +1,9 @@
 import "./MarketPage.css";
 import Button from "@mui/material/Button";
-import { getPriceAllItems, getPrice } from "./MarketUtils";
-import { ItemDatabase } from "../items/ItemDatabase";
 import MarketCharts from "./MarketCharts";
-import { Paper } from "@mui/material";
 import Card from "../card/Card";
-import { useItemDatabase } from "../items/ItemDatabaseProvider";
-import { useEffect } from "react";
+import { useItemDatabase } from "../items/ItemDatabaseProvider.tsx";
+import { useEffect, useState } from "react";
 
 function getAllPrices() {
   // getPriceAllItems(true).then((prices) => {
@@ -32,59 +29,67 @@ function getItemNames() {
 }
 
 function Market() {
+  const [loading, setLoading] = useState(true);
   const itemDB = useItemDatabase();
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
 
   return (
     <div className="marketPage">
-      <Card>
-        <div className="title">
-          <h1>Idle Clans Marketplace</h1>
-          <div>
-            Made by{" "}
-            <span style={{ fontWeight: 500 }}>VexingCitrus</span>
-          </div>
-        </div>
-      </Card>
-
-      <div className="marketChartWrapper">
+      <div hidden={!loading}>Loading...</div>
+      <div hidden={loading}>
         <Card>
-          <div className="marketButtonWrapper">
-            <div className="priceButton">
-              <Button
-                className="priceButton"
-                variant="contained"
-                onClick={getAllPrices}
-              >
-                Get All Prices
-              </Button>
-            </div>
-
-            <div className="priceButton">
-              <Button
-                className="priceButton"
-                color="secondary"
-                variant="contained"
-                onClick={getItemPrice}
-              >
-                Get Item Price
-              </Button>
-            </div>
-            <div className="priceButton">
-              <Button
-                className="priceButton"
-                color="secondary"
-                variant="contained"
-                onClick={getItemNames}
-              >
-                Get All Item Names
-              </Button>
+          <div className="title">
+            <h1>Idle Clans Marketplace</h1>
+            <div>
+              Made by{" "}
+              <span style={{ fontWeight: 500 }}>VexingCitrus</span>
             </div>
           </div>
         </Card>
 
-        <MarketCharts />
+        <div className="marketChartWrapper">
+          <Card>
+            <div className="marketButtonWrapper">
+              <div className="priceButton">
+                <Button
+                  className="priceButton"
+                  variant="contained"
+                  onClick={getAllPrices}
+                >
+                  Get All Prices
+                </Button>
+              </div>
 
-        <div id="prices"></div>
+              <div className="priceButton">
+                <Button
+                  className="priceButton"
+                  color="secondary"
+                  variant="contained"
+                  onClick={getItemPrice}
+                >
+                  Get Item Price
+                </Button>
+              </div>
+              <div className="priceButton">
+                <Button
+                  className="priceButton"
+                  color="secondary"
+                  variant="contained"
+                  onClick={getItemNames}
+                >
+                  Get All Item Names
+                </Button>
+              </div>
+            </div>
+          </Card>
+
+          <MarketCharts />
+
+          <div id="prices"></div>
+        </div>
       </div>
     </div>
   );
