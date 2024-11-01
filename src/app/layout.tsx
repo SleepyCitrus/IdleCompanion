@@ -1,5 +1,4 @@
-import "../app/globals.css";
-import type { AppProps } from "next/app";
+import "./globals.css";
 import { Montserrat, Source_Code_Pro } from "next/font/google";
 
 export const montserrat = Montserrat({
@@ -14,11 +13,17 @@ export const sourceCodePro = Source_Code_Pro({
   display: "swap",
 });
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <body>
-      <h1>hello there</h1>
-      <Component {...pageProps} />
-    </body>
+    <html lang="en">
+      <body>
+        <h1>hello there this is test font</h1>
+        {children}
+      </body>
+    </html>
   );
 }
