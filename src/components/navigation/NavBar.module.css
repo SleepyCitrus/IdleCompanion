@@ -1,0 +1,47 @@
+.navBar {
+  height: 100%;
+  padding: var(--mantine-spacing-lg);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  flex-shrink: 0;
+  border-right: rem(2px) solid var(--mantine-color-default-border);
+  background-color: var(--mantine-color-dark-9);
+}
+
+.navBarHeader {
+  padding-bottom: var(--mantine-spacing-md);
+  margin-bottom: calc(var(--mantine-spacing-md) * 1.5);
+  /* border-bottom: rem(1px) solid var(--mantine-color-default-border); */
+}
+
+.navBarLogoIcon {
+  stroke-width: 2;
+}
+
+.navBarMain {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.navBarGroup {
+  /* gap: var(--mantine-spacing-md); */
+  padding-bottom: var(--mantine-spacing-lg);
+  padding-top: var(--mantine-spacing-sm);
+  border-bottom: rem(2px) solid var(--mantine-color-default-border);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.navBarGroupLabel {
+  font-size: var(--mantine-font-size-sm);
+  color: var(--mantine-color-dimmed);
+  padding-top: var(--mantine-spacing-lg);
+}
+
+.navLinkWrapper {
+  border-radius: 12px;
+  height: calc(2.5 * var(--mantine-spacing-lg));
+}

@@ -1,0 +1,24 @@
+.header {
+  display: flex;
+  /* height: rem(100px); */
+  /* flex: 0 0 100%; */
+  padding-bottom: var(--mantine-spacing-lg);
+  border-bottom: rem(2px) solid var(--mantine-color-default-border);
+}
+
+.headerIcon {
+  height: 40px;
+  width: 40px;
+  color: var(--mantine-color-san-marino-6);
+}
+
+.headerIconBorder {
+  border: rem(4px) solid var(--mantine-color-san-marino-6);
+  border-radius: var(--mantine-radius-lg);
+  height: 55px;
+  width: 55px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}

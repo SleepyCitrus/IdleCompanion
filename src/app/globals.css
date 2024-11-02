@@ -1,33 +1,35 @@
+/* Tailwind Preflight */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 @layer base {
-  h1 {
-    @apply text-2xl;
+  html {
+    height: 100%;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    --mantine-color-text: var(--mantine-color-gray-2);
   }
 
-  h2 {
-    @apply text-xl;
+  body {
+    height: 100%;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    --mantine-color-text: var(--mantine-color-gray-2);
   }
-  h3 {
-    @apply text-lg;
+
+  code {
+    font-family: "Source Code Pro", "Monaco", monospace;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: inherit;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: var(--font-montserrat), sans-serif;
-}
-
-code {
-  font-family: var(--font-source-code-pro), monospace;
-}
+/* Normalize CSS */
