@@ -1,6 +1,6 @@
-import styles from "./Header.module.css";
 import { Group } from "@mantine/core";
 import { IconTrees } from "@tabler/icons-react";
+import styles from "./Header.module.css";
 
 export default function Header() {
   return (

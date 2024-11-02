@@ -1,10 +1,10 @@
 "use client";
 
 import { NavLink } from "@mantine/core";
-import styles from "./NavBar.module.css";
 import { IconBuildingStore, IconFall } from "@tabler/icons-react";
-import Header from "./Header";
 import { useState } from "react";
+import Header from "./Header";
+import styles from "./NavBar.module.css";
 
 export default function NavBar() {
   const [activeLink, setActiveLink] = useState("");

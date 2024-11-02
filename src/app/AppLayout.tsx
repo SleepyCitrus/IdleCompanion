@@ -1,7 +1,6 @@
 "use client";
 
 import NavBar from "@/components/navigation/NavBar";
-import { AppShell, Burger } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import styles from "./AppLayout.module.css";
 

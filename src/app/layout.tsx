@@ -1,17 +1,14 @@
-import "./globals.css";
-import { Inter, Source_Code_Pro } from "next/font/google";
-import "@mantine/core/styles.css";
 import {
   ColorSchemeScript,
   createTheme,
   CSSVariablesResolver,
-  DEFAULT_THEME,
   MantineProvider,
-  NavLink,
   rem,
-  useMantineTheme,
 } from "@mantine/core";
+import "@mantine/core/styles.css";
+import { Inter, Source_Code_Pro } from "next/font/google";
 import AppLayout from "./AppLayout";
+import "./globals.css";
 
 export const inter = Inter({
   subsets: ["latin"],
