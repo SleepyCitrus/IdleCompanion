@@ -1,0 +1,26 @@
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--mantine-color-gray-2);
+  padding: 0 var(--mantine-spacing-sm) var(--mantine-spacing-lg);
+}
+
+.logoIcon {
+  height: 30px;
+  width: 30px;
+  /* color: var(--mantine-color-san-marino-6); */
+}
+
+.logoIconBorder {
+  /* border: rem(4px) solid var(--mantine-color-san-marino-6); */
+  border: rem(3px) solid var(--mantine-color-text);
+  border-radius: 0.68rem;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}

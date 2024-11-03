@@ -1,10 +1,9 @@
-// `app/market/page.tsx` is the UI for the `/market` URL
-import styles from "./styles.module.css";
+import MarketPage from "./MarketPage";
 
-export default function Page() {
-  return (
-    <div className={styles.marketPage}>
-      <h1>Hello, Market Page!</h1>
-    </div>
+export default async function Page() {
+  let response = await fetch(
+    "https://idleclans.uraxys.dev/api/items/all"
   );
+  const items = await response.json();
+  return <MarketPage items={items} />;
 }

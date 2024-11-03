@@ -13,7 +13,7 @@ export default function AppPage({
 
   return (
     <div className={styles.appLayout}>
-      <NavBar></NavBar>
+      <NavBar />
       {children}
     </div>
   );

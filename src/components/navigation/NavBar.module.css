@@ -1,12 +1,17 @@
 .navBar {
-  height: 100%;
   padding: var(--mantine-spacing-lg);
   display: flex;
   flex-direction: column;
   flex-grow: 0;
   flex-shrink: 0;
-  border-right: rem(2px) solid var(--mantine-color-default-border);
-  background-color: var(--mantine-color-dark-9);
+  /* border-right: rem(1px) solid var(--mantine-color-default-border); */
+  /* background-color: #2a3142; */
+  background-color: var(--mantine-color-dark-8);
+  color: var(--mantine-color-gray-6);
+  align-self: flex-start;
+  position: sticky;
+  top: 0;
+  height: 100%;
 }
 
 .navBarHeader {
@@ -27,9 +32,9 @@
 
 .navBarGroup {
   /* gap: var(--mantine-spacing-md); */
-  padding-bottom: var(--mantine-spacing-lg);
+  /* padding-bottom: var(--mantine-spacing-lg); */
   padding-top: var(--mantine-spacing-sm);
-  border-bottom: rem(2px) solid var(--mantine-color-default-border);
+  /* border-bottom: rem(1px) solid var(--mantine-color-default-border); */
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -44,4 +49,9 @@
 .navLinkWrapper {
   border-radius: 12px;
   height: calc(2.5 * var(--mantine-spacing-lg));
+}
+
+.navLinkText {
+  font-size: 15px;
+  font-weight: 500;
 }

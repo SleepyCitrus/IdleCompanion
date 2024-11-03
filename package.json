@@ -15,9 +15,11 @@
     "@mantine/form": "^7.13.4",
     "@mantine/hooks": "^7.13.4",
     "@tabler/icons-react": "^3.21.0",
+    "chart.js": "^4.4.6",
     "dayjs": "^1.11.13",
     "next": "15.0.2",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "recharts": "^2.13.3"
   },

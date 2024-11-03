@@ -1,13 +1,15 @@
 "use client";
 
-import { NavLink } from "@mantine/core";
+import { NavLink, Text } from "@mantine/core";
 import { IconBuildingStore, IconFall } from "@tabler/icons-react";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
-import Header from "./Header";
+import Logo from "./Logo";
 import styles from "./NavBar.module.css";
 
 export default function NavBar() {
-  const [activeLink, setActiveLink] = useState("");
+  const pathname = usePathname();
+  const [activeLink, setActiveLink] = useState(pathname.slice(1));
 
   const resourceLinkData = [
     { link: "", label: "Marketplace", icon: IconBuildingStore },
@@ -22,54 +24,62 @@ export default function NavBar() {
   ];
 
   const highlightActive = (label: string) => {
-    return activeLink === label;
+    return activeLink === label.toLowerCase();
   };
 
-  const resourceLinks = resourceLinkData.map((data, index) => (
-    <NavLink
-      classNames={{
-        root: styles.navLinkWrapper,
-      }}
-      key={"resourceLinkId-" + index}
-      href={data.link}
-      label={data.label}
-      leftSection={<data.icon stroke={2} />}
-      variant="filled"
-      active={highlightActive(data.label)}
-      onClick={(event) => {
-        event.preventDefault();
-        setActiveLink(data.label);
-      }}
-    />
-  ));
+  const resourceLinks = resourceLinkData.map((data, index) => {
+    var labelId = data.label.toLowerCase();
+    return (
+      <NavLink
+        classNames={{
+          root: styles.navLinkWrapper,
+          label: styles.navLinkText,
+        }}
+        key={"resourceLinkId-" + labelId}
+        href={data.link}
+        label={data.label}
+        leftSection={<data.icon stroke={2} />}
+        variant="filled"
+        active={highlightActive(labelId)}
+        onClick={(event) => {
+          event.preventDefault();
+          setActiveLink(labelId);
+        }}
+      />
+    );
+  });
 
-  const fakeLinks = fakeLinkData.map((data, index) => (
-    <NavLink
-      classNames={{
-        root: styles.navLinkWrapper,
-      }}
-      key={"fakeLinkId-" + index}
-      href={data.link}
-      label={data.label}
-      leftSection={<data.icon stroke={2} />}
-      variant="filled"
-      active={highlightActive(data.label)}
-      onClick={(event) => {
-        event.preventDefault();
-        setActiveLink(data.label);
-      }}
-    />
-  ));
+  const fakeLinks = fakeLinkData.map((data, index) => {
+    var labelId = data.label.toLowerCase();
+    return (
+      <NavLink
+        classNames={{
+          root: styles.navLinkWrapper,
+          label: styles.navLinkText,
+        }}
+        key={"fakeLinkId-" + labelId}
+        href={data.link}
+        label={data.label}
+        leftSection={<data.icon stroke={2} />}
+        variant="filled"
+        active={highlightActive(labelId)}
+        onClick={(event) => {
+          event.preventDefault();
+          setActiveLink(labelId);
+        }}
+      />
+    );
+  });
 
   return (
     <nav className={styles.navBar}>
-      <Header></Header>
+      <Logo />
       <div className={styles.navBarMain}>
-        <span className={styles.navBarGroupLabel}>Resources</span>
+        <Text className={styles.navBarGroupLabel}>Resources</Text>
 
         <div className={styles.navBarGroup}>{resourceLinks}</div>
 
-        <span className={styles.navBarGroupLabel}>Account</span>
+        <Text className={styles.navBarGroupLabel}>Account</Text>
 
         <div className={styles.navBarGroup}>{fakeLinks}</div>
       </div>
