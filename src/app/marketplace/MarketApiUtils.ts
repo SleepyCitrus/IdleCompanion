@@ -11,18 +11,18 @@ export const timeRanges = ["1d", "7d", "30d", "1y"];
 
 // https://query.idleclans.com/api/PlayerMarket/items/prices/latest
 export function getPriceAllItems(includeAvgPrice = false) {
-  var url = urlBuilder(marketApi, priceApi, priceLatestApi);
-  var params = {
+  let url = urlBuilder(marketApi, priceApi, priceLatestApi);
+  let params = {
     includeAveragePrice: includeAvgPrice,
   };
-  var endpoint = endpointBuilder(url, params);
+  let endpoint = endpointBuilder(url, params);
 
   return fetchEndpoint(endpoint);
 }
 
 // https://query.idleclans.com/api/PlayerMarket/items/prices/latest/comprehensive/{itemId}
 export function getPrice(itemId: string, includeAveragePrice = false) {
-  var url = urlBuilder(
+  let url = urlBuilder(
     marketApi,
     priceApi,
     priceLatestApi,
@@ -30,24 +30,24 @@ export function getPrice(itemId: string, includeAveragePrice = false) {
     "/",
     itemId
   );
-  var params = { includeAveragePrice: includeAveragePrice };
-  var endpoint = endpointBuilder(url, params);
+  let params = { includeAveragePrice: includeAveragePrice };
+  let endpoint = endpointBuilder(url, params);
 
   return fetchEndpoint(endpoint);
 }
 
 // https://query.idleclans.com/api/PlayerMarket/items/prices/history/{itemId}
 export function getPriceHistory(itemId: string, period = "1d") {
-  var url = urlBuilder(marketApi, priceApi, historyApi, "/", itemId);
-  var params = { period: period };
-  var endpoint = endpointBuilder(url, params);
+  let url = urlBuilder(marketApi, priceApi, historyApi, "/", itemId);
+  let params = { period: period };
+  let endpoint = endpointBuilder(url, params);
 
   return fetchEndpoint(endpoint);
 }
 
 // https://idleclans.uraxys.dev/api/items/all
 export function getItemsToIds() {
-  var endpoint = endpointBuilder(itemsToIdsApi, []);
+  let endpoint = endpointBuilder(itemsToIdsApi, []);
 
   return fetch(endpoint).then((data) => {
     return data.json();
@@ -59,9 +59,9 @@ function urlBuilder(...urls: string[]) {
 }
 
 function endpointBuilder(url: string, params: any) {
-  var endpoint = new URL(url);
+  let endpoint = new URL(url);
 
-  for (var key in params) {
+  for (let key in params) {
     endpoint.searchParams.append(key, params[key]);
   }
 

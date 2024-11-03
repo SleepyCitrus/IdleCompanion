@@ -20,7 +20,7 @@ export default function PriceTracker({ items }: { items: Item[] }) {
   const [timeRange, setTimeRange] = useState<string>("7d");
 
   // Items set-up
-  var longestName = "";
+  let longestName = "";
   const itemNamesToIds = new Map<string, number>();
   items.forEach((item) => {
     longestName =

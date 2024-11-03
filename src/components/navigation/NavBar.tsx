@@ -28,7 +28,7 @@ export default function NavBar() {
   };
 
   const resourceLinks = resourceLinkData.map((data, index) => {
-    var labelId = data.label.toLowerCase();
+    let labelId = data.label.toLowerCase();
     return (
       <NavLink
         classNames={{
@@ -50,7 +50,7 @@ export default function NavBar() {
   });
 
   const fakeLinks = fakeLinkData.map((data, index) => {
-    var labelId = data.label.toLowerCase();
+    let labelId = data.label.toLowerCase();
     return (
       <NavLink
         classNames={{
