@@ -4,6 +4,10 @@ export default async function Page() {
   let response = await fetch(
     "https://idleclans.uraxys.dev/api/items/all"
   );
-  const items = await response.json();
-  return <MarketPage items={items} />;
+  const allItems = await response.json();
+  return (
+    <div className="flex w-full h-full">
+      <MarketPage allItems={allItems} />
+    </div>
+  );
 }

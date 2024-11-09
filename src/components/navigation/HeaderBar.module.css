@@ -1,8 +1,0 @@
-.headerBar {
-  display: flex;
-  /* height: rem(100px); */
-  /* flex: 0 0 100%; */
-  padding: 0 var(--mantine-spacing-sm) var(--mantine-spacing-lg);
-  /* background-color: #2a3142; */
-  /* border-bottom: rem(1px) solid var(--mantine-color-default-border); */
-}

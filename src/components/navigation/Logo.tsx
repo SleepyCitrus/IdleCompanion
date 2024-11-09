@@ -1,14 +1,10 @@
-import { Title } from "@mantine/core";
-import { IconTrees } from "@tabler/icons-react";
-import styles from "./Logo.module.css";
+import { Trees } from "lucide-react";
 
 export default function Logo() {
   return (
-    <div className={styles.logo}>
-      <span className={styles.logoIconBorder}>
-        <IconTrees className={styles.logoIcon} />
-      </span>
-      <Title order={4}>Idle Companion</Title>
+    <div className="flex flex-row gap-2 py-4 px-2 items-center">
+      <Trees size={40} />
+      <h4 className="pt-1">Idle Companion</h4>
     </div>
   );
 }

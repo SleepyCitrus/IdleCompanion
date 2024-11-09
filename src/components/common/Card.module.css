@@ -1,7 +1,0 @@
-.card {
-  background-color: var(--mantine-color-dark-8);
-  border-radius: 0.68rem;
-  padding: var(--mantine-spacing-md);
-  display: flex;
-  width: 100%;
-}

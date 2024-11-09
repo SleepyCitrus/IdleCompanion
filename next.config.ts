@@ -6,15 +6,15 @@ const nextConfig: NextConfig = {
   basePath: "/IdleCompanion",
 
   // Does NOT work with: output: "export",
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/marketplace",
-        permanent: true,
-      },
-    ];
-  },
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: "/",
+  //       destination: "/marketplace",
+  //       permanent: true,
+  //     },
+  //   ];
+  // },
 };
 
 export default nextConfig;
