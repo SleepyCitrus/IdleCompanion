@@ -13,7 +13,7 @@ export default function AppLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  var defaultRoute = allRoutes.find((route) => route.url === pathname);
+  let defaultRoute = allRoutes.find((route) => route.url === pathname);
 
   const [activeLink, setActiveLink] = useState<Routes | undefined>(
     defaultRoute
