@@ -23,8 +23,8 @@ export default function AppLayout({
     <SidebarProvider>
       <AppSidebar active={activeLink} setActive={setActiveLink} />
       <div className="flex flex-col w-full h-full max-w-screen-xl">
-        <AppHeadbar active={activeLink} />
         <main>
+          <AppHeadbar active={activeLink} />
           <div className="flex flex-row flex-wrap gap-2 py-4 px-6 w-full h-full">
             {children}
           </div>

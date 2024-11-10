@@ -17,30 +17,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
-import { useMemo, useState } from "react";
-
-const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-];
+import { useState } from "react";
 
 export default function Combobox({
   options,
@@ -59,21 +36,21 @@ export default function Combobox({
     return value === option ? "opacity-100" : "opacity-0";
   };
 
-  const memoOptions = useMemo(() => {
-    return options.map((option) => (
-      <CommandItem
-        key={option}
-        value={option}
-        onSelect={(currentValue) => {
-          setValue(currentValue);
-          setOpen(false);
-        }}
-      >
-        <Check className={cn("mr-2 h-4 w-4", opacityCheck(option))} />
-        {option}
-      </CommandItem>
-    ));
-  }, [options]);
+  // const memoOptions = useMemo(() => {
+  //   return options.map((option) => (
+  //     <CommandItem
+  //       key={option}
+  //       value={option}
+  //       onSelect={(currentValue) => {
+  //         setValue(currentValue);
+  //         setOpen(false);
+  //       }}
+  //     >
+  //       <Check className={cn("mr-2 h-4 w-4", opacityCheck(option))} />
+  //       {option}
+  //     </CommandItem>
+  //   ));
+  // }, [options]);
 
   let popoverWidth = w.toString();
   if (popoverWidth === "default") {
@@ -85,7 +62,7 @@ export default function Combobox({
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
-          variant="outline"
+          variant="combobox"
           role="combobox"
           aria-expanded={open}
           width={w}
@@ -103,7 +80,28 @@ export default function Combobox({
           <CommandInput placeholder="Search..." />
           <CommandList>
             <CommandEmpty>No item found.</CommandEmpty>
-            <CommandGroup>{memoOptions}</CommandGroup>
+            <CommandGroup>
+              {/* <ScrollArea className="h-24"> */}
+              {options.map((option) => (
+                <CommandItem
+                  key={option}
+                  value={option}
+                  onSelect={(currentValue) => {
+                    setValue(currentValue);
+                    setOpen(false);
+                  }}
+                >
+                  <Check
+                    className={cn(
+                      "mr-2 h-4 w-4",
+                      opacityCheck(option)
+                    )}
+                  />
+                  {option}
+                </CommandItem>
+              ))}
+              {/* </ScrollArea> */}
+            </CommandGroup>
           </CommandList>
         </Command>
       </PopoverContent>

@@ -8,7 +8,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 224 71.4% 4.1%;
     --foreground: 20 14.3% 4.1%;
     --card: 0 0% 100%;
     --card-foreground: 20 14.3% 4.1%;
@@ -44,13 +44,14 @@
 
     --link-primary: 234, 89%, 68%;
     --link-accent: 235, 90%, 58%;
+    --combobox-button-primary: 240 5.2% 33.9%;
   }
   .dark {
-    --background: 20 14.3% 4.1%;
+    --background: 240 5.9% 10%;
     --foreground: 60 9.1% 97.8%;
-    --card: 24 9.8% 10%;
+    --card: 240 3.7% 15.9%;
     --card-foreground: 60 9.1% 97.8%;
-    --popover: 20 14.3% 4.1%;
+    --popover: 240 5.3% 26.1%;
     --popover-foreground: 60 9.1% 97.8%;
     --primary: 60 9.1% 97.8%;
     --primary-foreground: 24 9.8% 10%;
@@ -70,7 +71,7 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
+    --sidebar-background: 240 3.7% 15.9%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
@@ -78,6 +79,8 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    --combobox-button-primary: 240 5.3% 26.1%;
+    --combobox-button-border: 240 5.3% 26.1%;
 
     --link-primary: 234, 89%, 68%;
     --link-accent: 235, 90%, 58%;
