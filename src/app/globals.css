@@ -45,6 +45,8 @@
     --link-primary: 234, 89%, 68%;
     --link-accent: 235, 90%, 58%;
     --combobox-button-primary: 240 5.2% 33.9%;
+
+    --chart-axis-primary: 24 5.4% 63.9%
   }
   .dark {
     --background: 240 5.9% 10%;
@@ -84,6 +86,23 @@
 
     --link-primary: 234, 89%, 68%;
     --link-accent: 235, 90%, 58%;
+
+    --chart-price-hi: 141.9 69.2% 58%
+    --chart-price-avg: 47.9 95.8% 53.1%
+    --chart-price-lo: 0 90.6% 70.8%
+    --chart-axis-primary: 24 5.4% 63.9%
+  }
+
+  .recharts-surface {
+    outline: none !important;
+  }
+
+  .recharts-cartesian-axis-tick-value {
+    stroke: none !important;
+  }
+
+  .recharts-cartesian-axis-line {
+    stroke: hsl(var(--chart-axis-primary)) !important
   }
 }
 

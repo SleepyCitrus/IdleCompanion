@@ -1,120 +1,105 @@
 "use client";
 
+import EmptyLineChart from "@/components/charts/EmptyPriceChart";
+import PriceChart from "@/components/charts/PriceChart";
 import { Card, CardContent } from "@/components/ui/card";
-import { ChartConfig, ChartContainer } from "@/components/ui/chart";
-import { Item } from "@/database/Item";
 import { Price } from "@/database/Price";
-import {
-  ArrowDownFromLine,
-  ArrowRightToLine,
-  ArrowUpFromLine,
-} from "lucide-react";
+import moment from "moment";
 import { useEffect, useState } from "react";
-import {
-  CartesianGrid,
-  Line,
-  LineChart,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import { Line, ResponsiveContainer } from "recharts";
 import { getPriceHistory } from "./MarketApiUtils";
+import Loading from "./loading";
 
-const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
-];
-
-const chartConfig = {
-  hiprice: {
-    label: "High Price",
-    icon: ArrowUpFromLine,
-    color: "hsl(var(--chart-1))",
-  },
-  loprice: {
-    label: "Low Price",
-    icon: ArrowDownFromLine,
-    color: "hsl(var(--chart-2))",
-  },
-  avgprice: {
-    label: "Average Price",
-    icon: ArrowRightToLine,
-    color: "hsl(var(--chart-3))",
-  },
-} satisfies ChartConfig;
+export interface PriceWithTimeNum {
+  averagePrice: number;
+  highestSellPrice: number;
+  itemId: number;
+  lowesSellPrice: number;
+  timestamp: number;
+  tradeVolume: number;
+}
 
 export default function PriceHistory({
   itemName,
   timeRange,
-  allItems,
+  itemNamesToId,
 }: {
   itemName: string;
   timeRange: string;
-  allItems: Item[];
+  itemNamesToId: Map<string, number>;
 }) {
-  const [loading, setLoading] = useState(true);
-  const [prices, setPrices] = useState<Price[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [prices, setPrices] = useState<PriceWithTimeNum[]>([]);
 
   useEffect(() => {
-    console.log("hello ive found a change", itemName, timeRange);
-
-    const search = allItems.find((item) => item.name_id === itemName);
-
-    if (search) {
+    const searchId = itemNamesToId.get(itemName) || null;
+    if (searchId) {
       Promise.resolve()
         .then(() => setLoading(true))
-        .then(() =>
-          getPriceHistory(search.internal_id.toString(), timeRange)
-        )
-        .then((data) => {
-          console.log("data", data);
-          setPrices(data);
+        .then(() => getPriceHistory(searchId.toString(), timeRange))
+        .then((data: Price[]) => {
+          const transformedPrice: PriceWithTimeNum[] = data.map(
+            (price) => ({
+              averagePrice: price.averagePrice,
+              highestSellPrice: price.highestSellPrice,
+              itemId: price.itemId,
+              lowesSellPrice: price.lowesSellPrice,
+              timestamp: Number(moment(price.timestamp).format("x")),
+              tradeVolume: price.tradeVolume,
+            })
+          );
+          setPrices(transformedPrice);
+        })
+        .then(() => {
           setLoading(false);
         });
     }
   }, [itemName, timeRange]);
 
   return (
-    <div className="flex flex-wrap gap-2 w-full">
+    <div className="flex flex-col flex-wrap gap-2 w-full">
       <Card className="flex basis-full">
-        <CardContent className="flex flex-wrap gap-2 pt-6">
-          <h4>Price History</h4>
-          <span>{itemName}</span>
-          <span>{timeRange}</span>
-          <h4 className="basis-full">Chart looking thing</h4>
-          <ChartContainer
-            config={chartConfig}
-            className="min-h-[200px] max-h-[400px] max-w-[1200px] w-full h-full"
-          >
-            <LineChart accessibilityLayer data={prices}>
-              <CartesianGrid strokeWidth={0.2} />
-              <XAxis dataKey="timestamp" />
-              <YAxis />
-              <Tooltip />
-              <Line
-                type="monotone"
-                dataKey="highestSellPrice"
-                dot={false}
-                radius={4}
-              />
-              <Line
-                type="monotone"
-                dataKey="lowesSellPrice"
-                dot={false}
-                radius={4}
-              />
-              <Line
-                type="monotone"
-                dataKey="averagePrice"
-                dot={false}
-                radius={4}
-              />
-            </LineChart>
-          </ChartContainer>
+        <CardContent className="flex flex-wrap gap-2 pt-6 w-full">
+          {loading ? (
+            <Loading />
+          ) : (
+            <>
+              <div className="flex flex-row gap-2">
+                <h4>Price History</h4>
+                <span>{itemName}</span>
+                <span>{timeRange}</span>
+              </div>
+              <h4 className="basis-full">Chart looking thing</h4>
+
+              <ResponsiveContainer width="100%" height={350}>
+                {prices.length > 0 ? (
+                  <PriceChart data={prices} xkey="timestamp">
+                    <Line
+                      type="monotone"
+                      dataKey="highestSellPrice"
+                      dot={false}
+                      stroke="hsl(141.9 69.2% 58%)"
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="lowesSellPrice"
+                      dot={false}
+                      stroke="hsl(0 90.6% 70.8%)"
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="averagePrice"
+                      dot={false}
+                      stroke="hsl(47.9 95.8% 53.1%)"
+                    />
+                  </PriceChart>
+                ) : (
+                  // dummy line chart if no data
+                  <EmptyLineChart />
+                )}
+              </ResponsiveContainer>
+            </>
+          )}
         </CardContent>
       </Card>
     </div>

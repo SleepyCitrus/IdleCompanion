@@ -16,6 +16,14 @@ export default function MarketPage({
   const [selectTime, setSelectTime] = useState("7d");
   console.log("allitems", allItems);
 
+  const allItemNames: string[] = [];
+  const itemNamesToId = new Map<string, number>();
+
+  allItems.forEach((item) => {
+    allItemNames.push(item.name_id);
+    itemNamesToId.set(item.name_id, item.internal_id);
+  });
+
   return (
     <div className="flex flex-row flex-wrap gap-2 w-full h-full">
       <span className="basis-full pb-4">
@@ -24,7 +32,7 @@ export default function MarketPage({
       </span>
 
       <HistorySelector
-        allItems={allItems}
+        allItemNames={allItemNames}
         selectItem={selectItem}
         setSelectItem={setSelectItem}
         selectTime={selectTime}
@@ -34,7 +42,7 @@ export default function MarketPage({
       <PriceHistory
         itemName={selectItem}
         timeRange={selectTime}
-        allItems={allItems}
+        itemNamesToId={itemNamesToId}
       />
     </div>
   );

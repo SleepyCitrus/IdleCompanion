@@ -3,34 +3,28 @@
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import Combobox from "@/components/ui/combobox";
 import { Label } from "@/components/ui/label";
-import { Item } from "@/database/Item";
-import { useMemo } from "react";
 import { timeOptions } from "./MarketPage";
 
 export default function HistorySelector({
-  allItems,
+  allItemNames,
   selectItem,
   setSelectItem,
   selectTime,
   setSelectTime,
 }: {
-  allItems: Item[];
+  allItemNames: string[];
   selectItem: string;
   setSelectItem: (i: string) => void;
   selectTime: string;
   setSelectTime: (t: string) => void;
 }) {
-  const getItemNames = (allItems: Item[]) =>
-    allItems.map((item) => item.name_id);
-  const items = useMemo(() => getItemNames(allItems), [allItems]);
-
   return (
     <Card className="w-full">
       <CardContent className="flex pt-6 gap-5">
         <div className="flex flex-col gap-2">
           <Label className="pl-1">Item</Label>
           <Combobox
-            options={items}
+            options={allItemNames}
             value={selectItem}
             setValue={setSelectItem}
             w="400px"
