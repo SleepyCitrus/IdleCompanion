@@ -14,7 +14,6 @@ export default function MarketPage({
 }) {
   const [selectItem, setSelectItem] = useState("");
   const [selectTime, setSelectTime] = useState("7d");
-  console.log("allitems", allItems);
 
   const allItemNames: string[] = [];
   const itemNamesToId = new Map<string, number>();

@@ -1,3 +1,5 @@
-# Idle Clans Market
+# Idle Companion
 
-A simple app that tracks market movement and hopefully other things in the future.
+Idle Companion is a simple project designed to provide some useful resources for the game of Idle Clans.
+
+Check it out: https://sleepycitrus.github.io/IdleCompanion/

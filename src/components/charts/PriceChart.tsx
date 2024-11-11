@@ -16,7 +16,6 @@ import {
   Payload,
   ValueType,
 } from "recharts/types/component/DefaultTooltipContent";
-var numeral = require("numeral");
 
 const timeFormatter = (value: string | number, _index: number = 0) => {
   return moment(value).format("MMM D HH:mm");
@@ -31,26 +30,29 @@ const hoursOnlyFormatter = (value: string | number) => {
 };
 
 const numberFormatter = (value: string | number, _index: number) => {
-  const abbrevNumber = numeral(value).format("0,0");
+  const abbrevNumber = Number(value).toLocaleString("en-US", {
+    maximumFractionDigits: 0,
+  });
+
   return abbrevNumber;
 };
 
 const xAxisBounds = (timeRange: string) => {
   return 0;
 
-  if (timeRange === "1d") {
-    // 1 hr
-    return 1000 * 60 * 60 * 1;
-  } else if (timeRange === "7d") {
-    // 12 hrs
-    return 1000 * 60 * 60 * 12;
-  } else if (timeRange === "30d") {
-    // 3 day
-    return 1000 * 60 * 60 * 24 * 3;
-  }
+  // if (timeRange === "1d") {
+  //   // 1 hr
+  //   return 1000 * 60 * 60 * 1;
+  // } else if (timeRange === "7d") {
+  //   // 12 hrs
+  //   return 1000 * 60 * 60 * 12;
+  // } else if (timeRange === "30d") {
+  //   // 3 day
+  //   return 1000 * 60 * 60 * 24 * 3;
+  // }
 
-  // 1 day
-  return 1000 * 60 * 60 * 24;
+  // // 1 day
+  // return 1000 * 60 * 60 * 24;
 };
 
 const xTickGenerator = (
@@ -298,10 +300,19 @@ export default function PriceChart({
             const lowerMultiplier = getMultiplier(dataMin, true);
             const upperMultiplier = getMultiplier(dataMax, false);
 
+            const loStart =
+              dataMin % lowerMultiplier === 0
+                ? dataMin - lowerMultiplier
+                : dataMin;
+            const hiStart =
+              dataMax % upperMultiplier === 0
+                ? dataMax + upperMultiplier
+                : dataMax;
+
             const loBound =
-              Math.floor(dataMin / lowerMultiplier) * lowerMultiplier;
+              Math.floor(loStart / lowerMultiplier) * lowerMultiplier;
             const upBound =
-              Math.ceil(dataMax / upperMultiplier) * upperMultiplier;
+              Math.ceil(hiStart / upperMultiplier) * upperMultiplier;
 
             return [loBound, upBound];
           }}
