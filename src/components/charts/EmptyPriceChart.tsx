@@ -10,5 +10,12 @@ export default function EmptyLineChart() {
     fakeData.push({ timestamp: date, price: cost });
   }
 
-  return <PriceChart data={fakeData} xkey="timestamp" ykey="price" />;
+  return (
+    <PriceChart
+      data={fakeData}
+      fakeData
+      xkey="timestamp"
+      ykey="price"
+    />
+  );
 }

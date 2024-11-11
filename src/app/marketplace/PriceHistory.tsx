@@ -7,8 +7,8 @@ import { Price } from "@/database/Price";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { Line, ResponsiveContainer } from "recharts";
+import { LoadingPriceHistory } from "./LoadingSkeleton";
 import { getPriceHistory } from "./MarketApiUtils";
-import Loading from "./loading";
 
 export interface PriceWithTimeNum {
   averagePrice: number;
@@ -32,8 +32,9 @@ export default function PriceHistory({
   const [prices, setPrices] = useState<PriceWithTimeNum[]>([]);
 
   useEffect(() => {
-    const searchId = itemNamesToId.get(itemName) || null;
-    if (searchId) {
+    const searchId = itemNamesToId.get(itemName);
+
+    if (searchId != null) {
       Promise.resolve()
         .then(() => setLoading(true))
         .then(() => getPriceHistory(searchId.toString(), timeRange))
@@ -61,36 +62,43 @@ export default function PriceHistory({
       <Card className="flex basis-full">
         <CardContent className="flex flex-wrap gap-2 pt-6 w-full">
           {loading ? (
-            <Loading />
+            <LoadingPriceHistory />
           ) : (
             <>
               <div className="flex flex-row gap-2">
-                <h4>Price History</h4>
-                <span>{itemName}</span>
-                <span>{timeRange}</span>
+                <h3>Price History</h3>
               </div>
-              <h4 className="basis-full">Chart looking thing</h4>
 
               <ResponsiveContainer width="100%" height={350}>
                 {prices.length > 0 ? (
-                  <PriceChart data={prices} xkey="timestamp">
+                  <PriceChart
+                    data={prices}
+                    xkey="timestamp"
+                    timeRange={timeRange}
+                  >
                     <Line
                       type="monotone"
                       dataKey="highestSellPrice"
                       dot={false}
-                      stroke="hsl(141.9 69.2% 58%)"
-                    />
-                    <Line
-                      type="monotone"
-                      dataKey="lowesSellPrice"
-                      dot={false}
-                      stroke="hsl(0 90.6% 70.8%)"
+                      stroke="hsl(var(--chart-price-hi))"
+                      animationDuration={5000}
+                      strokeWidth={3}
                     />
                     <Line
                       type="monotone"
                       dataKey="averagePrice"
                       dot={false}
-                      stroke="hsl(47.9 95.8% 53.1%)"
+                      stroke="hsl(var(--chart-price-avg))"
+                      animationDuration={5000}
+                      strokeWidth={3}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="lowesSellPrice"
+                      dot={false}
+                      stroke="hsl(var(--chart-price-lo))"
+                      animationDuration={5000}
+                      strokeWidth={3}
                     />
                   </PriceChart>
                 ) : (
