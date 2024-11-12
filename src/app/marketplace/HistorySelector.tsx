@@ -48,7 +48,7 @@ export default function HistorySelector({
             target="_blank"
             className="underline underline-offset-4 text-[color:hsl(var(--link-primary))] hover:text-[color:hsl(var(--link-accent))] font-semibold"
           >
-            Uraxy's dev items
+            Uraxy's item list
           </a>{" "}
           and may contain items that don't yet exist, have been
           removed, or cannot be sold.

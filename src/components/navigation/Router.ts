@@ -1,10 +1,4 @@
-import {
-  Calendar,
-  House,
-  Inbox,
-  LucideProps,
-  Store,
-} from "lucide-react";
+import { House, LucideProps, Store } from "lucide-react";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
 
 export interface Routes {
@@ -30,16 +24,6 @@ export const resourceRoutes: Routes[] = [
     title: "Marketplace",
     url: "/marketplace",
     icon: Store,
-  },
-  {
-    title: "Inbox",
-    url: "/inbox",
-    icon: Inbox,
-  },
-  {
-    title: "Calendar",
-    url: "/calendar",
-    icon: Calendar,
   },
 ];
 

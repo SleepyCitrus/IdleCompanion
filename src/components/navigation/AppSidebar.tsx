@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Separator } from "../ui/separator";
 import {
   Sidebar,
   SidebarContent,
@@ -35,6 +36,7 @@ export default function AppSidebar({
     <Sidebar>
       <SidebarHeader>
         <Logo />
+        <Separator className="bg-[color:hsl(var(--combobox-button-primary))]" />
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
@@ -80,7 +82,13 @@ export default function AppSidebar({
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter />
+      <SidebarFooter>
+        <Separator className="bg-[color:hsl(var(--combobox-button-primary))]" />
+        <div className="flex flex-col items-center gap-0 text-sm">
+          <p className="font-bold">Made by SleepyCitrus</p>
+          <p>(in-game VexingCitrus)</p>
+        </div>
+      </SidebarFooter>
     </Sidebar>
   );
 }

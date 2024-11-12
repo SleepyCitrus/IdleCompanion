@@ -314,7 +314,7 @@ export default function PriceChart({
             const upBound =
               Math.ceil(hiStart / upperMultiplier) * upperMultiplier;
 
-            return [loBound, upBound];
+            return [Math.max(loBound, 0), upBound];
           }}
           tick={{ fontSize: "0.75rem" }}
           interval={0}
