@@ -35,7 +35,7 @@ export default function AppSidebar({
   return (
     <Sidebar>
       <SidebarHeader>
-        <Logo />
+        <Logo setActive={setActive} />
         <Separator className="bg-[color:hsl(var(--combobox-button-primary))]" />
       </SidebarHeader>
       <SidebarContent>
