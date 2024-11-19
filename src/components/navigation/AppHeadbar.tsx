@@ -12,7 +12,7 @@ export default function AppHeadbar() {
 function NavBar() {
   return (
     <div
-      className="flex flex-row px-4 py-2 gap-2 items-center bg-[color:hsl(var(--sidebar-background))]"
+      className="flex flex-row px-4 py-2 items-center bg-[color:hsl(var(--sidebar-background))]"
       id="nav-headbar"
     >
       <SidebarTrigger />

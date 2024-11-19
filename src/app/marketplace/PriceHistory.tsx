@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { Line, ResponsiveContainer } from "recharts";
 import { LoadingPriceHistory } from "./LoadingSkeleton";
 import { getPriceHistory } from "./MarketApiUtils";
-import PriceStats from "./PriceStats";
+import TradeStats from "./TradeStats";
 
 export interface PriceWithTimeNum {
   averagePrice: number;
@@ -68,7 +68,7 @@ export default function PriceHistory({
         <LoadingPriceHistory />
       ) : (
         <>
-          <PriceStats prices={prices} />
+          <TradeStats prices={prices} />
 
           {/* Price History */}
           <Card className="flex basis-full" id="price-history-card">
@@ -77,7 +77,7 @@ export default function PriceHistory({
                 <h3>Price History</h3>
               </div>
 
-              <ResponsiveContainer width="100%" height={350}>
+              <ResponsiveContainer width="100%" height={400}>
                 {prices.length > 0 ? (
                   <PriceChart
                     data={prices}

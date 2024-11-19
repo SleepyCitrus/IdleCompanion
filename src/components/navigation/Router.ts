@@ -1,8 +1,9 @@
 import {
   ChartColumn,
+  Coins,
   House,
   LucideProps,
-  Sparkles,
+  Sprout,
   User,
 } from "lucide-react";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
@@ -37,9 +38,14 @@ export const resourceRoutes: Routes[] = [
     icon: User,
   },
   {
+    title: "Moneymakers",
+    url: "/money",
+    icon: Coins,
+  },
+  {
     title: "EXP Calculator",
     url: "/exp",
-    icon: Sparkles,
+    icon: Sprout,
   },
 ];
 

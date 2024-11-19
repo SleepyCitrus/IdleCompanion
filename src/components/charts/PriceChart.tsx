@@ -1,3 +1,5 @@
+"use client";
+
 import { PriceWithTimeNum } from "@/app/marketplace/PriceHistory";
 import moment from "moment";
 import {
@@ -29,7 +31,10 @@ const hoursOnlyFormatter = (value: string | number) => {
   return moment(value).format("HH:mm");
 };
 
-const numberFormatter = (value: string | number, _index: number) => {
+export const numberWithCommas = (
+  value: string | number,
+  _index?: number
+) => {
   const abbrevNumber = Number(value).toLocaleString("en-US", {
     maximumFractionDigits: 0,
   });
@@ -96,7 +101,6 @@ const xTickGenerator = (
   }
   return [...ticks];
 };
-
 interface TickProps {
   x?: number;
   y?: number;
@@ -116,7 +120,7 @@ const CustomTick = ({ x, y, payload, timeRange }: TickProps) => {
         transform={`translate(${x},${y})`}
       >
         <text
-          className="text-xs fill-[color:hsl(var(--chart-axis-primary))]"
+          className="text-xs fill-[color:hsl(var(--chart-axis-primary))] -rotate-90 translate-y-5 -translate-x-1.5 md:rotate-0 md:translate-y-0 md:translate-x-0"
           x={0}
           y={0}
           dy={10}
@@ -177,7 +181,7 @@ const CustomTooltip = ({
                 // text-[color:hsl(var(--chart-price-lo))]
               >
                 {formattedName(line.name.toString())}:{" "}
-                {numberFormatter(line.value.toString(), 0)}
+                {numberWithCommas(line.value.toString(), 0)}
               </p>
             );
           }
@@ -216,14 +220,14 @@ export default function PriceChart({
   children?: React.ReactNode;
 }) {
   return (
-    <ResponsiveContainer width="100%" height={350}>
+    <ResponsiveContainer width="100%" height={400}>
       <LineChart
         accessibilityLayer
         width={800}
         height={400}
         data={data}
         margin={{
-          bottom: 22,
+          bottom: 40,
           left: 40,
           right: 20,
           top: 12,
@@ -271,16 +275,17 @@ export default function PriceChart({
         >
           <Label
             value="Date"
-            position="insideBottom"
-            offset={-18}
+            position="bottom"
+            offset={25}
             style={{
               fill: "hsl(var(--foreground))",
+              // transform: "translate(0, 15px)",
             }}
           />
         </XAxis>
         <YAxis
           dataKey={ykey}
-          tickFormatter={numberFormatter}
+          tickFormatter={numberWithCommas}
           type="number"
           scale="linear"
           domain={([dataMin, dataMax]) => {

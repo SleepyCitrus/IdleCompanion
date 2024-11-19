@@ -37,6 +37,7 @@ export default function HistorySelector({
             value={selectTime}
             setValue={setSelectTime}
             w="150px"
+            scrollHeight="36"
           />
         </div>
       </CardContent>

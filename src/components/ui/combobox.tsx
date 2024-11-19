@@ -18,12 +18,14 @@ import {
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import { ScrollArea } from "./scroll-area";
 
 export default function Combobox({
   options,
   value,
   setValue,
   w = "default",
+  scrollHeight = "48",
 }: {
   options: string[];
   value: string;
@@ -36,6 +38,7 @@ export default function Combobox({
     | "300px"
     | "350px"
     | "400px";
+  scrollHeight?: string;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -72,23 +75,23 @@ export default function Combobox({
           <CommandList>
             <CommandEmpty>No item found.</CommandEmpty>
             <CommandGroup>
-              {/* <ScrollArea className="h-24"> */}
-              {options.map((option) => (
-                <CommandItem
-                  key={option}
-                  value={option}
-                  onSelect={(currentValue) => {
-                    setValue(currentValue);
-                    setOpen(false);
-                  }}
-                >
-                  <Check
-                    className={cn("h-4 w-4", opacityCheck(option))}
-                  />
-                  {option}
-                </CommandItem>
-              ))}
-              {/* </ScrollArea> */}
+              <ScrollArea className={"h-" + scrollHeight}>
+                {options.map((option) => (
+                  <CommandItem
+                    key={option}
+                    value={option}
+                    onSelect={(currentValue) => {
+                      setValue(currentValue);
+                      setOpen(false);
+                    }}
+                  >
+                    <Check
+                      className={cn("h-4 w-4", opacityCheck(option))}
+                    />
+                    {option}
+                  </CommandItem>
+                ))}
+              </ScrollArea>
             </CommandGroup>
           </CommandList>
         </Command>
