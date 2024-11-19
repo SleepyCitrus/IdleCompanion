@@ -1,4 +1,10 @@
-import { House, LucideProps, Store } from "lucide-react";
+import {
+  House,
+  LucideProps,
+  Sparkles,
+  Store,
+  User,
+} from "lucide-react";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
 
 export interface Routes {
@@ -24,6 +30,16 @@ export const resourceRoutes: Routes[] = [
     title: "Marketplace",
     url: "/marketplace",
     icon: Store,
+  },
+  {
+    title: "Character Profile",
+    url: "/profile",
+    icon: User,
+  },
+  {
+    title: "EXP Calculator",
+    url: "/exp",
+    icon: Sparkles,
   },
 ];
 

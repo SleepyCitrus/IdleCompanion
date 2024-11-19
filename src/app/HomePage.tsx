@@ -1,6 +1,10 @@
+import PageTitle from "@/components/commons/PageTitle";
+
 export default function HomePage() {
   return (
-    <div className="flex" id="home-page-id">
+    <div className="flex flex-col" id="home-page-id">
+      <PageTitle />
+
       <span>
         Welcome to Idle Companion! This is a simple project of mine
         that provides some, <i>hopefully</i>, useful resources for the

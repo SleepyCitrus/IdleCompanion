@@ -51,6 +51,8 @@
     --chart-price-hi: 141.9, 69.2%, 58%;
     --chart-price-avg: 47.9, 95.8%, 53.1%;
     --chart-price-lo: 0, 90.6%, 70.8%;
+
+    --min-supported-screen: 420px;
   }
   .dark {
     --background: 240 5.9% 10%;

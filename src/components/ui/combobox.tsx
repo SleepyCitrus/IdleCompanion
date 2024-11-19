@@ -28,29 +28,20 @@ export default function Combobox({
   options: string[];
   value: string;
   setValue: (v: string) => void;
-  w?: "default" | "100px" | "150px" | "200px" | "300px" | "400px";
+  w?:
+    | "default"
+    | "100px"
+    | "150px"
+    | "200px"
+    | "300px"
+    | "350px"
+    | "400px";
 }) {
   const [open, setOpen] = useState(false);
 
   const opacityCheck = (option: string) => {
     return value === option ? "opacity-100" : "opacity-0";
   };
-
-  // const memoOptions = useMemo(() => {
-  //   return options.map((option) => (
-  //     <CommandItem
-  //       key={option}
-  //       value={option}
-  //       onSelect={(currentValue) => {
-  //         setValue(currentValue);
-  //         setOpen(false);
-  //       }}
-  //     >
-  //       <Check className={cn("mr-2 h-4 w-4", opacityCheck(option))} />
-  //       {option}
-  //     </CommandItem>
-  //   ));
-  // }, [options]);
 
   let popoverWidth = w.toString();
   if (popoverWidth === "default") {
@@ -92,10 +83,7 @@ export default function Combobox({
                   }}
                 >
                   <Check
-                    className={cn(
-                      "mr-2 h-4 w-4",
-                      opacityCheck(option)
-                    )}
+                    className={cn("h-4 w-4", opacityCheck(option))}
                   />
                   {option}
                 </CommandItem>

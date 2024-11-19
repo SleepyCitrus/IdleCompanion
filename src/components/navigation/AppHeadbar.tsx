@@ -1,15 +1,22 @@
-import { SidebarTrigger } from "../ui/sidebar";
-import { Routes } from "./Router";
+"use client";
 
-export default function AppHeadbar({ active }: { active?: Routes }) {
-  const getTitle = (active?: Routes) => {
-    return active?.title ?? "Title";
-  };
+import { SidebarTrigger, useSidebar } from "../ui/sidebar";
+import Logo from "./Logo";
 
+export default function AppHeadbar() {
+  const { isMobile } = useSidebar();
+
+  return <div className="">{isMobile ? <NavBar /> : null}</div>;
+}
+
+function NavBar() {
   return (
-    <div className="flex flex-row p-4 pt-7 gap-2 items-center">
+    <div
+      className="flex flex-row px-4 py-2 gap-2 items-center bg-[color:hsl(var(--sidebar-background))]"
+      id="nav-headbar"
+    >
       <SidebarTrigger />
-      <h2>{getTitle(active)}</h2>
+      <Logo />
     </div>
   );
 }

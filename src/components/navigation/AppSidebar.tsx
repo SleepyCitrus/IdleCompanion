@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useTitleContext } from "../providers/TitleProvider";
 import { Separator } from "../ui/separator";
 import {
   Sidebar,
@@ -13,31 +14,30 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "../ui/sidebar";
 import Logo from "./Logo";
 import { homeRoutes, resourceRoutes, Routes } from "./Router";
 
-export default function AppSidebar({
-  active,
-  setActive,
-}: {
-  active?: Routes;
-  setActive: (activeLink: Routes) => void;
-}) {
-  const isLinkActive = (title: Routes) => {
-    return active === title;
+export default function AppSidebar() {
+  const { title, setTitle } = useTitleContext();
+  const { isMobile } = useSidebar();
+
+  const isLinkActive = (link: Routes) => {
+    return title === link.title;
   };
 
-  const setActiveLink = (link: Routes) => {
-    setActive(link);
-  };
-
+  // Sidebar when larger than mobile displays
   return (
     <Sidebar>
-      <SidebarHeader>
-        <Logo setActive={setActive} />
-        <Separator className="bg-[color:hsl(var(--combobox-button-primary))]" />
-      </SidebarHeader>
+      {!isMobile ? (
+        <SidebarHeader>
+          <Logo />
+          <Separator className="bg-[color:hsl(var(--combobox-button-primary))]" />
+        </SidebarHeader>
+      ) : (
+        <div className="p-2"></div>
+      )}
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Navigation</SidebarGroupLabel>
@@ -48,10 +48,10 @@ export default function AppSidebar({
                   <SidebarMenuButton
                     asChild
                     isActive={isLinkActive(item)}
-                    onClick={() => setActiveLink(item)}
+                    onClick={() => setTitle(item.title)}
                   >
                     <Link href={item.url}>
-                      <item.icon />
+                      <item.icon size={100} />
                       <span>{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
@@ -69,11 +69,11 @@ export default function AppSidebar({
                   <SidebarMenuButton
                     asChild
                     isActive={isLinkActive(item)}
-                    onClick={() => setActiveLink(item)}
+                    onClick={() => setTitle(item.title)}
                   >
                     <Link href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
+                      <item.icon width={40} />
+                      <span className="text-md">{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

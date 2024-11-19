@@ -1,5 +1,6 @@
 "use client";
 
+import PageTitle from "@/components/commons/PageTitle";
 import { useState } from "react";
 import { Item } from "../../database/Item";
 import HistorySelector from "./HistorySelector";
@@ -25,6 +26,8 @@ export default function MarketPage({
 
   return (
     <div className="flex flex-row flex-wrap gap-2 w-full h-full">
+      <PageTitle />
+
       <span className="basis-full pb-4">
         Select an item to view it's price history, highest and lowest
         price points, and overall trade volume.

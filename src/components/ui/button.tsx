@@ -17,7 +17,8 @@ const buttonVariants = cva(
           "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
         secondary:
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
+        ghost:
+          "hover:bg-accent hover:text-accent-foreground [&_svg]:size-6",
         link: "text-primary underline-offset-4 hover:underline",
         combobox:
           "border border-[color:hsl(var(--combobox-button-border))] bg-[color:hsl(var(--combobox-button-primary))] shadow-sm hover:bg-accent hover:text-accent-foreground",
@@ -34,6 +35,7 @@ const buttonVariants = cva(
         "150px": "w-[150px]",
         "200px": "w-[200px]",
         "300px": "w-[300px]",
+        "350px": "w-[350px]",
         "400px": "w-[400px]",
       },
     },

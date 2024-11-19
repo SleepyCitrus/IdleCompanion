@@ -20,14 +20,14 @@ export default function HistorySelector({
 }) {
   return (
     <Card className="w-full">
-      <CardContent className="flex pt-6 gap-5">
+      <CardContent className="flex pt-6 gap-5 flex-wrap">
         <div className="flex flex-col gap-2">
           <Label className="pl-1">Item</Label>
           <Combobox
             options={allItemNames}
             value={selectItem}
             setValue={setSelectItem}
-            w="400px"
+            w="350px"
           />
         </div>
         <div className="flex flex-col gap-2">

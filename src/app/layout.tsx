@@ -1,4 +1,5 @@
 import AppLayout from "@/components/layout/AppLayout";
+import { TitleProvider } from "@/components/providers/TitleProvider";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import "./globals.css";
 
@@ -16,7 +17,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <AppLayout>{children}</AppLayout>
+          <TitleProvider>
+            <AppLayout>{children}</AppLayout>
+          </TitleProvider>
         </ThemeProvider>
       </body>
     </html>
