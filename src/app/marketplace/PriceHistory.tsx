@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { Line, ResponsiveContainer } from "recharts";
 import { LoadingPriceHistory } from "./LoadingSkeleton";
 import { getPriceHistory } from "./MarketApiUtils";
+import PriceStats from "./PriceStats";
 
 export interface PriceWithTimeNum {
   averagePrice: number;
@@ -58,13 +59,20 @@ export default function PriceHistory({
   }, [itemName, timeRange]);
 
   return (
-    <div className="flex flex-col flex-wrap gap-2 w-full">
-      <Card className="flex basis-full">
-        <CardContent className="flex flex-wrap gap-2 pt-6 w-full">
-          {loading ? (
-            <LoadingPriceHistory />
-          ) : (
-            <>
+    <div
+      className="flex flex-row flex-wrap gap-2 w-full"
+      id="price-history-wrapper"
+    >
+      {/* Price Stats */}
+      {loading ? (
+        <LoadingPriceHistory />
+      ) : (
+        <>
+          <PriceStats prices={prices} />
+
+          {/* Price History */}
+          <Card className="flex basis-full" id="price-history-card">
+            <CardContent className="flex flex-wrap gap-2 pt-6 w-full">
               <div className="flex flex-row gap-2">
                 <h3>Price History</h3>
               </div>
@@ -106,10 +114,10 @@ export default function PriceHistory({
                   <EmptyLineChart />
                 )}
               </ResponsiveContainer>
-            </>
-          )}
-        </CardContent>
-      </Card>
+            </CardContent>
+          </Card>
+        </>
+      )}
     </div>
   );
 }
