@@ -1,5 +1,5 @@
 /* Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Reddit+Sans:ital,wght@0,200..900;1,200..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 
 /* Tailwind Preflight */
 @tailwind base;
@@ -62,7 +62,7 @@
     --card-foreground: 60 9.1% 97.8%;
     --popover: 215.3 25% 26.7%;
     --popover-foreground: 60 9.1% 97.8%;
-    --primary: 60 9.1% 97.8%;
+    --primary: 222 64% 76%;
     --primary-foreground: 24 9.8% 10%;
     --secondary: 12 6.5% 15.1%;
     --secondary-foreground: 60 9.1% 97.8%;
@@ -100,7 +100,7 @@
     --chart-price-lo: 0, 90.6%, 70.8%;
     --chart-axis-primary: 24 5.4% 63.9%;
 
-    --stats-text: 215, 20.2%, 65.1%;
+    --stats-text-muted: 215, 20.2%, 65.1%;
   }
 
   .recharts-surface {
@@ -123,7 +123,7 @@
     @apply border-border;
   }
   html {
-    font-family: "Inter", system-ui, sans-serif;
+    font-family: "Reddit Sans", "Inter", system-ui, sans-serif;
     @apply tracking-wide
     /* letter-spacing: 0.04rem; */;
   }

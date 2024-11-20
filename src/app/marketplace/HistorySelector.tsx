@@ -51,7 +51,7 @@ export default function HistorySelector({
           >
             Uraxy's item list
           </a>{" "}
-          and may contain items that don't yet exist, have been
+          and may contain items that don't exist yet, have been
           removed, or cannot be sold.
         </i>
       </CardFooter>

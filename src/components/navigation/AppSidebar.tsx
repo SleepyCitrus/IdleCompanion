@@ -73,7 +73,7 @@ export default function AppSidebar() {
                   >
                     <Link href={item.url}>
                       <item.icon width={40} />
-                      <span className="text-md">{item.title}</span>
+                      <span className="text-base">{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

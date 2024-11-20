@@ -7,7 +7,7 @@ import { Price } from "@/database/Price";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { Line, ResponsiveContainer } from "recharts";
-import { LoadingPriceHistory } from "./LoadingSkeleton";
+import { LoadingPriceHistory } from "./LoadingPriceHistory";
 import { getPriceHistory } from "./MarketApiUtils";
 import TradeStats from "./TradeStats";
 

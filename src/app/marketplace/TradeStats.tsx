@@ -75,53 +75,74 @@ export default function TradeStats({
   return (
     <Card className="flex basis-full" id="price-stats-card">
       <CardContent className="pt-6 w-full">
-        <div className="flex flex-row flex-wrap w-full">
+        <div
+          className="flex flex-row flex-wrap w-full"
+          id="trade-stats"
+        >
           <div className="basis-full pb-3">
             <h3>Trade Stats</h3>
           </div>
-          <div className="flex flex-col gap-2">
-            <div className="flex flex-row flex-wrap w-full">
+          <div
+            className="flex flex-col gap-2 basis-[300px] flex-grow pb-2"
+            id="trade-stats-prices"
+          >
+            <div className="flex flex-row flex-wrap">
               <ChevronsUp color="hsl(var(--chart-price-hi))" />
-              <span className="px-2 text-md">Highest Sell Price:</span>
-              <span className="text-md font-bold ">
+              <span className="px-2 text-base">
+                Highest Sell Price:
+              </span>
+              <span className="text-base font-bold ">
                 {numberWithCommas(stats.highestSellPrice)}
               </span>
-              <div className="basis-full"></div>
-              <span className="pl-8 text-sm text-[color:hsl(var(--stats-text))]">
+              <i className="pl-8 basis-full text-sm text-[color:hsl(var(--stats-text-muted))]">
                 {moment(stats.highestSellDate).fromNow()}
-              </span>
+              </i>
             </div>
-            <div className="flex flex-row flex-wrap w-full">
+            <div className="flex flex-row flex-wrap">
               <ChevronsDown color="hsl(var(--chart-price-lo))" />
-              <span className="px-2 text-md">Lowest Sell Price:</span>
-              <span className="text-md font-bold ">
+              <span className="px-2 text-base">
+                Lowest Sell Price:
+              </span>
+              <span className="text-base font-bold ">
                 {numberWithCommas(stats.lowestSellPrice)}
               </span>
-              <div className="basis-full"></div>
-              <span className="pl-8 text-sm text-[color:hsl(var(--stats-text))]">
+              <i className="pl-8 basis-full text-sm text-[color:hsl(var(--stats-text-muted))]">
                 {moment(stats.lowestSellDate).fromNow()}
-              </span>
-            </div>
-            <div className="flex flex-row flex-wrap w-full pb-4">
-              <UnfoldVertical width={24} />
-              <span className="px-2 text-md">Maximum Margin:</span>
-              <span className="text-md font-bold ">
-                {numberWithCommas(stats.maximumMargin)}
-              </span>
+              </i>
             </div>
           </div>
-          <div className="flex flex-col gap-2">
+          <div
+            className="flex flex-col gap-2 basis-[300px] flex-grow"
+            id="trade-stats-margin"
+          >
+            <div className="flex flex-row flex-wrap w-full pb-4">
+              <UnfoldVertical width={24} />
+              <span className="px-2 text-base">Maximum Margin:</span>
+              <span className="text-base font-bold ">
+                {numberWithCommas(stats.maximumMargin)}
+              </span>
+              <i className="pl-8 text-sm text-[color:hsl(var(--stats-text-muted))] basis-full">
+                Does not factor in the 1% trading tax.
+              </i>
+            </div>
+          </div>
+          <div
+            className="flex flex-col gap-2 basis-[300px] flex-grow"
+            id="trade-stats-volume"
+          >
             <div className="flex flex-row flex-wrap w-full">
               <Blocks />
-              <span className="px-2 pb-2 text-md">Daily Volume:</span>
-              <span className="text-md font-bold ">
+              <span className="px-2 pb-2 text-base">
+                Daily Volume:
+              </span>
+              <span className="text-base font-bold ">
                 {numberWithCommas(stats.dailyVolume)}
               </span>
             </div>
             <div className="flex flex-row flex-wrap w-full">
               <Blocks />
-              <span className="px-2 text-md">Total Volume:</span>
-              <span className="text-md font-bold ">
+              <span className="px-2 text-base">Total Volume:</span>
+              <span className="text-base font-bold ">
                 {numberWithCommas(stats.totalVolume)}
               </span>
             </div>

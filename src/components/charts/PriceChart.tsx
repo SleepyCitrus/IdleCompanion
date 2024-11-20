@@ -162,14 +162,16 @@ const CustomTooltip = ({
 }: TooltipProps<ValueType, NameType>) => {
   if (active && payload && payload.length) {
     return (
-      <div className="text-sm bg-[hsl(var(--combobox-button-primary))] p-2 rounded-lg border border-[color:hsl(var(--muted))]">
-        <p className="text-md font-bold">{tooltipFormatter(label)}</p>
+      <div className="text-sm bg-[hsl(var(--combobox-button-primary))] p-2 rounded-lg border border-[color:hsl(var(--combobox-button-primary))]">
+        <p className="text-base font-bold">
+          {tooltipFormatter(label)}
+        </p>
 
         {payload.map((line: Payload<ValueType, NameType>) => {
           if (line.name != null && line.value != null) {
             return (
               <p
-                className="text-xs"
+                className="text-sm"
                 key={line.dataKey}
                 // text-sm
                 // For some reason the commented text must stay in order to modify the text color?

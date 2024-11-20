@@ -25,7 +25,7 @@ export default function MarketPage({
   });
 
   return (
-    <div className="flex flex-row flex-wrap w-full h-full">
+    <div className="flex flex-col flex-wrap w-full h-full">
       <PageTitle />
 
       <div className="flex flex-col gap-2">

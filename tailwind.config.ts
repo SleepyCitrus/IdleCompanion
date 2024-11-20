@@ -88,6 +88,10 @@ const config: Config = {
           ring: "hsl(var(--sidebar-ring))",
         },
       },
+      flexBasis: {
+        "1/2": "50%",
+        "1/3": "33%",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
