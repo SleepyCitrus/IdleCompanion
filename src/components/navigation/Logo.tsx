@@ -7,7 +7,7 @@ export default function Logo() {
   const { setTitle } = useTitleContext();
 
   return (
-    <div className="flex flex-row py-2 px-2 justify-center basis-full min-w-[var(--min-supported-screen)] md:min-w-0">
+    <div className="flex flex-row py-2 px-2 justify-center basis-full md:min-w-0 items-center">
       <FlameKindling size={40} />
       <Link
         href="/"
