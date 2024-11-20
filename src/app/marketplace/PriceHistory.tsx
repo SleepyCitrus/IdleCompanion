@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { Line, ResponsiveContainer } from "recharts";
 import { LoadingPriceHistory } from "./LoadingPriceHistory";
 import { getPriceHistory } from "./MarketApiUtils";
+import NoHistoryWarning from "./NoHistoryWarning";
 import TradeStats from "./TradeStats";
 
 export interface PriceWithTimeNum {
@@ -30,6 +31,7 @@ export default function PriceHistory({
   itemNamesToId: Map<string, number>;
 }) {
   const [loading, setLoading] = useState(false);
+  const [showWarning, setShowWarning] = useState(false);
   const [prices, setPrices] = useState<PriceWithTimeNum[]>([]);
 
   useEffect(() => {
@@ -40,16 +42,23 @@ export default function PriceHistory({
         .then(() => setLoading(true))
         .then(() => getPriceHistory(searchId.toString(), timeRange))
         .then((data: Price[]) => {
-          const transformedPrice: PriceWithTimeNum[] = data.map(
-            (price) => ({
+          console.log("data", data);
+          let transformedPrice: PriceWithTimeNum[] = [];
+          let warning = true;
+
+          if (data?.length) {
+            // Found data, transform and return
+            warning = false;
+            transformedPrice = data.map((price) => ({
               averagePrice: price.averagePrice,
               highestSellPrice: price.highestSellPrice,
               itemId: price.itemId,
               lowesSellPrice: price.lowesSellPrice,
               timestamp: Number(moment(price.timestamp).format("x")),
               tradeVolume: price.tradeVolume,
-            })
-          );
+            }));
+          }
+          setShowWarning(warning);
           setPrices(transformedPrice);
         })
         .then(() => {
@@ -68,6 +77,8 @@ export default function PriceHistory({
         <LoadingPriceHistory />
       ) : (
         <>
+          {showWarning && <NoHistoryWarning />}
+
           <TradeStats prices={prices} />
 
           {/* Price History */}

@@ -42,7 +42,7 @@ export default function HistorySelector({
         </div>
       </CardContent>
       <CardFooter>
-        <i className="text-sm">
+        <i className="text-sm text-[color:hsl(var(--stats-text-muted))]">
           The list of items is queried from{" "}
           <a
             href="https://idleclans.uraxys.dev/api/items/all"
