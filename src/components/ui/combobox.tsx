@@ -52,8 +52,6 @@ export default function Combobox({
   }
   const popoverClass = `w-[${popoverWidth}] p-0`;
 
-  console.log("scrollheight", scrollHeight);
-
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>

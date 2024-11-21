@@ -42,7 +42,6 @@ export default function PriceHistory({
         .then(() => setLoading(true))
         .then(() => getPriceHistory(searchId.toString(), timeRange))
         .then((data: Price[]) => {
-          console.log("data", data);
           let transformedPrice: PriceWithTimeNum[] = [];
           let warning = true;
 
