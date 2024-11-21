@@ -31,7 +31,7 @@ export default function HistorySelector({
             value={selectItem}
             setValue={setSelectItem}
             w="350px"
-            scrollHeight={isMobile ? "36" : "48"}
+            mobile={isMobile}
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -41,7 +41,7 @@ export default function HistorySelector({
             value={selectTime}
             setValue={setSelectTime}
             w="150px"
-            scrollHeight="36"
+            mobile={isMobile}
           />
         </div>
       </CardContent>

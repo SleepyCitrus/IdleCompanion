@@ -25,7 +25,7 @@ export default function Combobox({
   value,
   setValue,
   w = "default",
-  scrollHeight = "48",
+  mobile = false,
 }: {
   options: string[];
   value: string;
@@ -38,7 +38,7 @@ export default function Combobox({
     | "300px"
     | "350px"
     | "400px";
-  scrollHeight?: string;
+  mobile?: boolean;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -51,6 +51,7 @@ export default function Combobox({
     popoverWidth = "100px";
   }
   const popoverClass = `w-[${popoverWidth}] p-0`;
+  const commandListClass = mobile ? `max-h-[140px]` : `max-h-[300px]`;
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -72,10 +73,10 @@ export default function Combobox({
       <PopoverContent className={popoverClass}>
         <Command>
           <CommandInput placeholder="Search..." />
-          <CommandList>
+          <CommandList className={commandListClass}>
             <CommandEmpty>No item found.</CommandEmpty>
             <CommandGroup>
-              <ScrollArea className={"h-36"}>
+              <ScrollArea>
                 {options.map((option) => (
                   <CommandItem
                     key={option}
