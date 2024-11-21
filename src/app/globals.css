@@ -102,6 +102,8 @@
     --chart-axis-primary: 24 5.4% 63.9%;
 
     --stats-text-muted: 215, 20.2%, 65.1%;
+
+    --scrollbar: 215.4 16.3% 46.9%;
   }
 
   .recharts-surface {

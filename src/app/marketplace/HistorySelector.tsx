@@ -3,6 +3,7 @@
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import Combobox from "@/components/ui/combobox";
 import { Label } from "@/components/ui/label";
+import { useSidebar } from "@/components/ui/sidebar";
 import { timeOptions } from "./MarketPage";
 
 export default function HistorySelector({
@@ -18,6 +19,8 @@ export default function HistorySelector({
   selectTime: string;
   setSelectTime: (t: string) => void;
 }) {
+  const { isMobile } = useSidebar();
+
   return (
     <Card className="w-full">
       <CardContent className="flex pt-6 gap-5 flex-wrap">
@@ -28,6 +31,7 @@ export default function HistorySelector({
             value={selectItem}
             setValue={setSelectItem}
             w="350px"
+            scrollHeight={isMobile ? "36" : "48"}
           />
         </div>
         <div className="flex flex-col gap-2">

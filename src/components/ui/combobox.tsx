@@ -52,6 +52,8 @@ export default function Combobox({
   }
   const popoverClass = `w-[${popoverWidth}] p-0`;
 
+  console.log("scrollheight", scrollHeight);
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -75,7 +77,7 @@ export default function Combobox({
           <CommandList>
             <CommandEmpty>No item found.</CommandEmpty>
             <CommandGroup>
-              <ScrollArea className={"h-" + scrollHeight}>
+              <ScrollArea className={"h-36"}>
                 {options.map((option) => (
                   <CommandItem
                     key={option}

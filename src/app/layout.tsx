@@ -11,6 +11,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="overflow-x-hidden">
+        {/* <ScrollArea className="h-svh"> */}
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -21,6 +22,7 @@ export default function RootLayout({
             <AppLayout>{children}</AppLayout>
           </TitleProvider>
         </ThemeProvider>
+        {/* </ScrollArea> */}
       </body>
     </html>
   );
