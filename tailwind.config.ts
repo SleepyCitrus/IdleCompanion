@@ -52,6 +52,7 @@ module.exports = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          muted: "hsl(var(--primary-muted))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -85,6 +86,7 @@ module.exports = {
           primary: "hsl(var(--sidebar-primary))",
           "primary-foreground":
             "hsl(var(--sidebar-primary-foreground))",
+          hover: "hsl(var(--sidebar-hover))",
           accent: "hsl(var(--sidebar-accent))",
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
           border: "hsl(var(--sidebar-border))",

@@ -132,7 +132,13 @@ const CustomTick = ({ x, y, payload, timeRange }: TickProps) => {
           {dateFormatter(payload.value)}
         </text>
         {timeRange === "1d" ? (
-          <text x={0} y={0} dy={22} textAnchor="middle">
+          <text
+            x={0}
+            y={0}
+            dy={22}
+            textAnchor="middle"
+            className="-rotate-90 md:rotate-0 translate-y-5 -translate-x-1.5 md:translate-y-0 md:translate-x-0"
+          >
             {hoursOnlyFormatter(payload.value)}
           </text>
         ) : null}
