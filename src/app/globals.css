@@ -107,6 +107,8 @@
     --stats-text-muted: 215, 20.2%, 65.1%;
 
     --scrollbar: 215.4 16.3% 46.9%;
+
+    --skeleton: 222 64% 76%;
   }
 
   .recharts-surface {

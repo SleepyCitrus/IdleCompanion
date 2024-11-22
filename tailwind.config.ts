@@ -92,6 +92,9 @@ module.exports = {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        skeleton: {
+          DEFAULT: "hsl(var(--skeleton))",
+        },
       },
       flexBasis: {
         "1/2": "50%",

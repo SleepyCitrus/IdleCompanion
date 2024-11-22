@@ -59,12 +59,12 @@ export default function CharacterSelect({
                 name="username"
                 render={({ field }) => {
                   return (
-                    <FormItem>
+                    <FormItem className="flex flex-col w-full">
+                      <FormLabel>Name</FormLabel>
+
                       <FormControl className="flex flex-row w-full">
                         <div className="flex flex-row gap-2 items-end flex-wrap">
                           <div className="flex flex-col gap-2 flex-grow flex-shrink min-w-[300px] max-w-[500px]">
-                            <FormLabel>Name</FormLabel>
-
                             <div
                               className="flex flex-row items-center px-3 border border-[color:hsl(var(--combobox-button-border))] bg-[color:hsl(var(--combobox-button-primary))] rounded-md  m-0"
                               id="character-select-input-wrapper"

@@ -4,11 +4,11 @@ import EmptyLineChart from "@/components/charts/EmptyPriceChart";
 import PriceChart from "@/components/charts/PriceChart";
 import { Card, CardContent } from "@/components/ui/card";
 import { Price } from "@/database/Price";
+import { getPriceHistory } from "@/lib/ApiUtils";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { Line, ResponsiveContainer } from "recharts";
 import { LoadingPriceHistory } from "./LoadingPriceHistory";
-import { getPriceHistory } from "./MarketApiUtils";
 import NoHistoryWarning from "./NoHistoryWarning";
 import TradeStats from "./TradeStats";
 

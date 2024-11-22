@@ -1,4 +1,6 @@
-const marketApi = "https://query.idleclans.com/api/PlayerMarket/items";
+const baseIdleClansApi = "https://query.idleclans.com/api";
+
+const marketApi = "/PlayerMarket/items";
 const itemsToIdsApi = "https://idleclans.uraxys.dev/api/items/all";
 
 const priceApi = "/prices";
@@ -7,11 +9,18 @@ const priceComprehensiveApi = "/comprehensive";
 
 const historyApi = "/history";
 
+const profileApi = "/Player/profile";
+
 export const timeRanges = ["1d", "7d", "30d", "1y"];
 
 // https://query.idleclans.com/api/PlayerMarket/items/prices/latest
 export function getPriceAllItems(includeAvgPrice = false) {
-  let url = urlBuilder(marketApi, priceApi, priceLatestApi);
+  let url = urlBuilder(
+    baseIdleClansApi,
+    marketApi,
+    priceApi,
+    priceLatestApi
+  );
   let params = {
     includeAveragePrice: includeAvgPrice,
   };
@@ -23,6 +32,7 @@ export function getPriceAllItems(includeAvgPrice = false) {
 // https://query.idleclans.com/api/PlayerMarket/items/prices/latest/comprehensive/{itemId}
 export function getPrice(itemId: string, includeAveragePrice = false) {
   let url = urlBuilder(
+    baseIdleClansApi,
     marketApi,
     priceApi,
     priceLatestApi,
@@ -38,9 +48,24 @@ export function getPrice(itemId: string, includeAveragePrice = false) {
 
 // https://query.idleclans.com/api/PlayerMarket/items/prices/history/{itemId}
 export function getPriceHistory(itemId: string, period = "1d") {
-  let url = urlBuilder(marketApi, priceApi, historyApi, "/", itemId);
+  let url = urlBuilder(
+    baseIdleClansApi,
+    marketApi,
+    priceApi,
+    historyApi,
+    "/",
+    itemId
+  );
   let params = { period: period };
   let endpoint = endpointBuilder(url, params);
+
+  return fetchEndpoint(endpoint);
+}
+
+// https://query.idleclans.com/api/Player/profile/{name}
+export function getPlayerProfile(name: string) {
+  let url = urlBuilder(baseIdleClansApi, profileApi, "/", name);
+  let endpoint = endpointBuilder(url, {});
 
   return fetchEndpoint(endpoint);
 }
@@ -69,7 +94,10 @@ function endpointBuilder(url: string, params: any) {
 }
 
 function fetchEndpoint(endpoint: string | URL | Request) {
-  return fetch(endpoint).then((data) => {
-    return data.json();
+  return fetch(endpoint).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error(response.status.toString());
   });
 }
