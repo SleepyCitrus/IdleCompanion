@@ -74,7 +74,7 @@ export default function TradeStats({
 
   return (
     <Card className="flex basis-full" id="price-stats-card">
-      <CardContent className="pt-6 w-full">
+      <CardContent className="w-full">
         <div
           className="flex flex-row flex-wrap w-full"
           id="trade-stats"

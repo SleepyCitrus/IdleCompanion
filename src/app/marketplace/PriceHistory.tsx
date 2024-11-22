@@ -82,7 +82,7 @@ export default function PriceHistory({
 
           {/* Price History */}
           <Card className="flex basis-full" id="price-history-card">
-            <CardContent className="flex flex-wrap gap-2 pt-6 w-full">
+            <CardContent className="flex flex-wrap gap-2 w-full">
               <div className="flex flex-row gap-2">
                 <h3>Price History</h3>
               </div>

@@ -6,10 +6,10 @@ export default function NoHistoryWarning() {
     <div className="w-full" id="no-history-warning">
       <Card className="bg-[color:hsl(var(--alert-background))]">
         <CardContent>
-          <div className="flex flex-row pt-6">
-            <CircleAlert />
+          <div className="flex flex-row">
+            <CircleAlert className="flex-shrink-0 flex-grow-0" />
             <div
-              className="flex flex-col pl-4"
+              className="flex flex-col pl-2 sm:pl-4"
               id="no-history-warning-message"
             >
               <span className="">

@@ -2,10 +2,11 @@
 // import type { Config } from "tailwindcss";
 
 module.exports = {
-  darkMode: ["class"],
+  darkMode: "selector",
   corePlugins: {
     preflight: true,
   },
+  jit: true,
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",

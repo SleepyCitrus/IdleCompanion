@@ -1,9 +1,10 @@
 "use client";
 
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import Combobox from "@/components/ui/combobox";
+import { VirtualizedCombobox } from "@/components/ui/combobox";
 import { Label } from "@/components/ui/label";
 import { useSidebar } from "@/components/ui/sidebar";
+import { cn } from "@/lib/utils";
 import { timeOptions } from "./MarketPage";
 
 export default function HistorySelector({
@@ -23,25 +24,38 @@ export default function HistorySelector({
 
   return (
     <Card className="w-full">
-      <CardContent className="flex pt-6 gap-5 flex-wrap">
+      <CardContent className={cn("flex gap-5 flex-wrap")}>
         <div className="flex flex-col gap-2">
           <Label className="pl-1">Item</Label>
-          <Combobox
+          {/* <Combobox
             options={allItemNames}
             value={selectItem}
             setValue={setSelectItem}
-            w="350px"
+            w={ComboboxWidths["320px"]}
             mobile={isMobile}
+          /> */}
+          <VirtualizedCombobox
+            options={allItemNames}
+            value={selectItem}
+            setValue={setSelectItem}
+            height={isMobile ? "135px" : "300px"}
           />
         </div>
         <div className="flex flex-col gap-2">
           <Label className="pl-1">Time Range</Label>
-          <Combobox
+          {/* <Combobox
             options={timeOptions}
             value={selectTime}
             setValue={setSelectTime}
-            w="150px"
+            w={ComboboxWidths["150px"]}
             mobile={isMobile}
+          /> */}
+          <VirtualizedCombobox
+            options={timeOptions}
+            value={selectTime}
+            setValue={setSelectTime}
+            searchPlaceholder="Search times..."
+            width="150px"
           />
         </div>
       </CardContent>

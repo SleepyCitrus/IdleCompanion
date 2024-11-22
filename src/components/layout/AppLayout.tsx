@@ -15,7 +15,10 @@ export default function AppLayout({
       <div className="flex flex-col w-full h-full max-w-screen-xl">
         <main>
           <AppHeadbar />
-          <div className="flex flex-row flex-wrap gap-2 py-4 px-4 min-w-[--min-supported-screen] sm:px-6 w-full h-full">
+          <div
+            className="flex flex-row flex-wrap gap-2 py-4 px-2 min-w-[--min-supported-screen] sm:px-6 w-full h-full"
+            id="app-layout-wrapper"
+          >
             {children}
           </div>
         </main>

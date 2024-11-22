@@ -1,6 +1,7 @@
 "use client";
 
 import { PriceWithTimeNum } from "@/app/marketplace/PriceHistory";
+import { GitCommitHorizontal } from "lucide-react";
 import moment from "moment";
 import {
   CartesianGrid,
@@ -13,11 +14,13 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { Props } from "recharts/types/component/DefaultLegendContent";
 import {
   NameType,
   Payload,
   ValueType,
 } from "recharts/types/component/DefaultTooltipContent";
+import { useSidebar } from "../ui/sidebar";
 
 const timeFormatter = (value: string | number, _index: number = 0) => {
   return moment(value).format("MMM D HH:mm");
@@ -139,14 +142,20 @@ const CustomTick = ({ x, y, payload, timeRange }: TickProps) => {
   return null;
 };
 
-const formattedName = (value: string) => {
+const formattedName = (
+  value: string,
+  includePrice: boolean = true
+) => {
   let formattedName = "";
   if (value === "highestSellPrice") {
-    formattedName = "High Price";
+    formattedName = "High";
   } else if (value === "lowesSellPrice") {
-    formattedName = "Low Price";
+    formattedName = "Low";
   } else {
-    formattedName = "Average Price";
+    formattedName = "Average";
+  }
+  if (includePrice) {
+    formattedName = formattedName + " Price";
   }
   return formattedName;
 };
@@ -196,6 +205,36 @@ const CustomTooltip = ({
   return null;
 };
 
+interface CustomLegendProps {
+  payload: Props[];
+}
+
+const customLegend = (props: Props) => {
+  console.log("props", props);
+  return (
+    <ul className="text-[12px] sm:text-sm flex flex-row gap-2 justify-end">
+      {props.payload?.map((value, index) => {
+        return (
+          <li
+            key={`${value}-${index}`}
+            className="flex flex-row items-center"
+            style={{
+              color: value.color,
+            }}
+          >
+            <GitCommitHorizontal className="flex-grow-0 flex-shrink-0" />
+            <span>
+              {value.dataKey?.toString()
+                ? formattedName(value.dataKey?.toString(), false)
+                : ""}
+            </span>
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
+
 const getInterval = (value: string) => {
   if (value === "1d") {
     return 2;
@@ -221,6 +260,10 @@ export default function PriceChart({
   fakeData?: boolean;
   children?: React.ReactNode;
 }) {
+  const { isMobile } = useSidebar();
+
+  const marginLeft = isMobile ? 22 : 40;
+
   return (
     <ResponsiveContainer width="100%" height={400}>
       <LineChart
@@ -230,9 +273,9 @@ export default function PriceChart({
         data={data}
         margin={{
           bottom: 40,
-          left: 40,
-          right: 20,
-          top: 12,
+          left: marginLeft,
+          right: 45,
+          top: 15,
         }}
       >
         <CartesianGrid strokeWidth={0.2} />
@@ -249,6 +292,10 @@ export default function PriceChart({
           align="right"
           height={35}
           formatter={(value, entry, index) => formattedName(value)}
+          content={customLegend}
+          style={{
+            minWidth: "300px",
+          }}
         />
         <XAxis
           dataKey={xkey}
@@ -275,15 +322,17 @@ export default function PriceChart({
           }}
           dy={4}
         >
-          <Label
-            value="Date"
-            position="bottom"
-            offset={25}
-            style={{
-              fill: "hsl(var(--foreground))",
-              // transform: "translate(0, 15px)",
-            }}
-          />
+          {!isMobile && (
+            <Label
+              value="Date"
+              position="bottom"
+              offset={25}
+              style={{
+                fill: "hsl(var(--foreground))",
+                // transform: "translate(0, 15px)",
+              }}
+            />
+          )}
         </XAxis>
         <YAxis
           dataKey={ykey}
@@ -335,15 +384,17 @@ export default function PriceChart({
             stroke: "hsl(var(--chart-axis-primary))",
           }}
         >
-          <Label
-            value="Price"
-            position="left"
-            offset={33}
-            style={{
-              fill: "hsl(var(--foreground))",
-            }}
-            angle={-90}
-          />
+          {!isMobile && (
+            <Label
+              value="Price"
+              position="left"
+              offset={33}
+              style={{
+                fill: "hsl(var(--foreground))",
+              }}
+              angle={-90}
+            />
+          )}
         </YAxis>
         {children}
       </LineChart>
