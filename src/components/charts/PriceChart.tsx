@@ -210,7 +210,6 @@ interface CustomLegendProps {
 }
 
 const customLegend = (props: Props) => {
-  console.log("props", props);
   return (
     <ul className="text-[12px] sm:text-sm flex flex-row gap-2 justify-end">
       {props.payload?.map((value, index) => {

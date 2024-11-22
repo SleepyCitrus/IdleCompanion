@@ -43,20 +43,23 @@ export default function AppSidebar() {
           <SidebarGroupLabel>Navigation</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {homeRoutes.map((item) => (
-                <SidebarMenuItem key="home">
-                  <SidebarMenuButton
-                    asChild
-                    isActive={isLinkActive(item)}
-                    onClick={() => setTitle(item.title)}
-                  >
-                    <Link href={item.url}>
-                      <item.icon size={100} />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              {[...homeRoutes].map((value) => {
+                const [url, item] = value;
+                return (
+                  <SidebarMenuItem key="home">
+                    <SidebarMenuButton
+                      asChild
+                      isActive={isLinkActive(item)}
+                      onClick={() => setTitle(item.title)}
+                    >
+                      <Link href={url}>
+                        <item.icon size={100} />
+                        <span>{item.title}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -64,20 +67,23 @@ export default function AppSidebar() {
           <SidebarGroupLabel>Resources</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {resourceRoutes.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    asChild
-                    isActive={isLinkActive(item)}
-                    onClick={() => setTitle(item.title)}
-                  >
-                    <Link href={item.url}>
-                      <item.icon width={40} />
-                      <span className="text-base">{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              {[...resourceRoutes].map((value) => {
+                const [url, item] = value;
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton
+                      asChild
+                      isActive={isLinkActive(item)}
+                      onClick={() => setTitle(item.title)}
+                    >
+                      <Link href={url}>
+                        <item.icon width={40} />
+                        <span className="text-base">{item.title}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

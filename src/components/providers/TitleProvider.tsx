@@ -26,7 +26,7 @@ export function TitleProvider({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  let defaultRoute = allRoutes.find((route) => route.url === pathname);
+  let defaultRoute = allRoutes.get(pathname);
   let defaultTitle = defaultRoute ? defaultRoute.title : "";
   const [title, setTitle] = useState(defaultTitle);
 

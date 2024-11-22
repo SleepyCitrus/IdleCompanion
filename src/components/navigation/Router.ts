@@ -18,35 +18,38 @@ export interface Routes {
 
 export const basePath = "/IdleCompanion";
 
-export const homeRoutes: Routes[] = [
-  {
-    title: "Home",
-    url: "/",
-    icon: House,
-  },
-];
+const homeRoutes: Map<string, Routes> = new Map();
+homeRoutes.set("/", {
+  title: "Home",
+  url: "/",
+  icon: House,
+});
 
-export const resourceRoutes: Routes[] = [
-  {
-    title: "Marketplace",
-    url: "/marketplace",
-    icon: ChartColumn,
-  },
-  {
-    title: "Character Profile",
-    url: "/profile",
-    icon: User,
-  },
-  {
-    title: "Moneymakers",
-    url: "/money",
-    icon: Coins,
-  },
-  {
-    title: "EXP Calculator",
-    url: "/exp",
-    icon: Sprout,
-  },
-];
+const resourceRoutes: Map<string, Routes> = new Map();
+resourceRoutes.set("/marketplace", {
+  title: "Marketplace",
+  url: "/marketplace",
+  icon: ChartColumn,
+});
+resourceRoutes.set("/profile", {
+  title: "Character Profile",
+  url: "/profile",
+  icon: User,
+});
+resourceRoutes.set("/money", {
+  title: "Moneymakers",
+  url: "/money",
+  icon: Coins,
+});
+resourceRoutes.set("/exp", {
+  title: "EXP Calculator",
+  url: "/exp",
+  icon: Sprout,
+});
 
-export const allRoutes: Routes[] = [...homeRoutes, ...resourceRoutes];
+const allRoutes: Map<string, Routes> = new Map([
+  ...homeRoutes.entries(),
+  ...resourceRoutes.entries(),
+]);
+
+export { allRoutes, homeRoutes, resourceRoutes };
