@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { useVirtualizer } from "@tanstack/react-virtual";
+import Fuse from "fuse.js";
 import { Check, ChevronDown } from "lucide-react";
 import { useRef, useState } from "react";
 
@@ -52,33 +53,26 @@ const VirtualizedCommand = ({
 
   const virtualOptions = virtualizer.getVirtualItems();
 
-  const searchSubstring = (option: string, search: string) => {
+  const fuzzySearch = (options: Option[], search: string) => {
     if (!search?.length) {
-      return true;
+      return options;
     }
 
-    let letters = [...option];
-    return [...search].every((x) => {
-      if (x === " ") {
-        return true;
-      }
-      let index = letters.indexOf(x);
-      if (~index) {
-        letters.splice(index, 1);
-        return true;
-      }
+    // Use Fuse.js to fuzzy search an ordered list of possible matches
+    const fuse = new Fuse(options, {
+      includeScore: true,
+      findAllMatches: true,
+      threshold: 0.49,
+      keys: ["value"],
     });
+
+    const searchResults = fuse.search(search);
+    console.log("searchresults", searchResults);
+    return [...searchResults].map((result) => result.item);
   };
 
   const handleSearch = (search: string) => {
-    setFilteredOptions(
-      options.filter((option) =>
-        searchSubstring(
-          option.value.toLowerCase(),
-          search.toLowerCase()
-        )
-      )
-    );
+    setFilteredOptions(fuzzySearch(options, search));
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
