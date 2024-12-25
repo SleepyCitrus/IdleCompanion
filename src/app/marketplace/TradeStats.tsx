@@ -1,6 +1,7 @@
 "use client";
 
 import { numberWithCommas } from "@/components/charts/PriceChart";
+import DescriptionTextItalics from "@/components/commons/DescriptionTextItalics";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Blocks,
@@ -94,9 +95,9 @@ export default function TradeStats({
               <span className="text-base font-bold ">
                 {numberWithCommas(stats.highestSellPrice)}
               </span>
-              <i className="pl-8 basis-full text-sm text-[color:hsl(var(--stats-text-muted))]">
+              <DescriptionTextItalics className="pl-8 basis-full">
                 {moment(stats.highestSellDate).fromNow()}
-              </i>
+              </DescriptionTextItalics>
             </div>
             <div className="flex flex-row flex-wrap">
               <ChevronsDown color="hsl(var(--chart-price-lo))" />
@@ -106,9 +107,9 @@ export default function TradeStats({
               <span className="text-base font-bold ">
                 {numberWithCommas(stats.lowestSellPrice)}
               </span>
-              <i className="pl-8 basis-full text-sm text-[color:hsl(var(--stats-text-muted))]">
+              <DescriptionTextItalics className="pl-8 basis-full">
                 {moment(stats.lowestSellDate).fromNow()}
-              </i>
+              </DescriptionTextItalics>
             </div>
           </div>
           <div
@@ -121,9 +122,9 @@ export default function TradeStats({
               <span className="text-base font-bold ">
                 {numberWithCommas(stats.maximumMargin)}
               </span>
-              <i className="pl-8 text-sm text-[color:hsl(var(--stats-text-muted))] basis-full">
+              <DescriptionTextItalics className="pl-8 basis-full">
                 Does not factor in the 1% trading tax.
-              </i>
+              </DescriptionTextItalics>
             </div>
           </div>
           <div

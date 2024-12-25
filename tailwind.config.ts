@@ -16,6 +16,10 @@ module.exports = {
   theme: {
     extend: {
       screens: {
+        // typical iPhone screen size
+        xs: "390px",
+        // => @media (min-width: 390px) { ... }
+
         sm: "640px",
         // => @media (min-width: 640px) { ... }
 

@@ -5,19 +5,19 @@ export default function Loading() {
   return (
     <div className="flex flex-row flex-wrap gap-2 w-full">
       {/* Title */}
-      <Skeleton className="h-[68px] w-full" />
+      <Skeleton className="h-[60px] w-full" />
 
       {/* Description */}
       <Skeleton className="min-h-[40px] w-full"></Skeleton>
 
-      {/* HistorySelector */}
-      <Skeleton className="w-full min-h-[152px]" />
+      {/* CharacterSelect */}
+      <Skeleton className="w-full min-h-[146px]" />
 
-      {/* TradeStats */}
-      <Skeleton className="w-full min-h-[258px]" />
+      {/* Profile */}
+      <Skeleton className="w-full min-h-[134px]" />
 
-      {/* PriceHistory */}
-      <Skeleton className="w-full min-h-[486px]" />
+      {/* Upgrades */}
+      <Skeleton className="w-full min-h-[131px]" />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import DescriptionTextItalics from "@/components/commons/DescriptionTextItalics";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -86,10 +87,10 @@ export default function CharacterSelect({
               />
             </form>
           </Form>
-          <i className="pt-4 text-sm text-[color:hsl(var(--stats-text-muted))]">
+          <DescriptionTextItalics className="pt-4">
             Character names can only be a maximum of 20 characters
             long.
-          </i>
+          </DescriptionTextItalics>
         </div>
       </CardContent>
     </Card>

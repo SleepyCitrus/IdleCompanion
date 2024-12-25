@@ -1,4 +1,4 @@
-interface SkillAttributes {
+export interface SkillAttributes {
   agility: number;
   archery: number;
   attack: number;
@@ -18,7 +18,7 @@ interface SkillAttributes {
 }
 
 // Each slot is the ID of the equipped item
-interface EquipmentSlots {
+export interface EquipmentSlots {
   ammunition: number;
   amulet: number;
   belt: number;
@@ -36,7 +36,7 @@ interface EquipmentSlots {
   rightHand: number;
 }
 
-interface BossKills {
+export interface BossKills {
   Chimera: number;
   Devil: number;
   Griffin: number;
@@ -51,7 +51,7 @@ interface BossKills {
   Zeus: number;
 }
 
-interface UpgradeTiers {
+export interface UpgradeTiers {
   "ammo-saver": number;
   ancientWisdom: number;
   arrowCrafter: number;
@@ -91,7 +91,7 @@ interface UpgradeTiers {
   valuedClanMember: number;
 }
 
-interface ProfileAttributes {
+export interface ProfileAttributes {
   enchantmentBoosts: SkillAttributes;
   equipment: EquipmentSlots;
 
@@ -107,3 +107,44 @@ interface ProfileAttributes {
   // e.g. "VexingCitrus"
   username: string;
 }
+
+export const fullUpgradeTiers = {
+  // Max stage for each upgrade
+  housing: 5,
+  keepItSpacious: 190,
+  theLumberjack: 5,
+  theFisherman: 4,
+  autoEating: 1,
+  autoLooting: 1,
+  offlineProgress: 6,
+  valuedClanMember: 1,
+  farmingTrickery: 5,
+  powerForager: 5,
+  smeltingMagic: 3,
+  mostEfficientFisherman: 5,
+  plankBargain: 3,
+  "ammo-saver": 6,
+  ninja: 4,
+  monsterHunter: 1,
+  teamwork: 1,
+  bossSlayer: 1,
+  toolbeltUpgrade: 6,
+  lazyRaider: 1,
+  ancientWisdom: 1,
+  masterCrafter: 1,
+  extraLoadouts: 15,
+  "kronosWho?": 1,
+  keepItBurning: 1,
+  betterSkinner: 1,
+  betterFisherman: 1,
+  betterLumberjack: 1,
+  arrowCrafter: 1,
+  delicateManufacturing: 1,
+  responsibleDrinking: 1,
+  lastNegotiation: 1,
+  showUsTheMoney: 1,
+  pickyEater: 1,
+  prestigiousWoodworking: 1,
+  gettingInSync: 1,
+  upgrade_bounty_hunter: 1,
+};

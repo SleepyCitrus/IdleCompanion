@@ -1,5 +1,6 @@
 "use client";
 
+import DescriptionTextItalics from "@/components/commons/DescriptionTextItalics";
 import Hyperlink from "@/components/commons/Hyperlink";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { VirtualizedCombobox } from "@/components/ui/combobox";
@@ -61,7 +62,7 @@ export default function HistorySelector({
         </div>
       </CardContent>
       <CardFooter>
-        <i className="text-sm text-[color:hsl(var(--stats-text-muted))]">
+        <DescriptionTextItalics>
           The list of items is queried from{" "}
           <Hyperlink
             href="https://idleclans.uraxys.dev/api/items/all"
@@ -70,7 +71,7 @@ export default function HistorySelector({
           />{" "}
           and may contain items that don't exist yet, have been
           removed, or cannot be sold.
-        </i>
+        </DescriptionTextItalics>
       </CardFooter>
     </Card>
   );

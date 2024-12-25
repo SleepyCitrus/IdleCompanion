@@ -1,40 +1,134 @@
 "use client";
 
+import DescriptionTextItalics from "@/components/commons/DescriptionTextItalics";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { getPlayerProfile } from "@/lib/ApiUtils";
-import { CharacterProfileInterface } from "@/lib/CharacterUtils";
 import { useEffect, useState } from "react";
+import { LoadingCharacterProfile } from "./LoadingCharacterProfile";
+import {
+  fullUpgradeTiers,
+  ProfileAttributes,
+  UpgradeTiers,
+} from "./ProfileAttributes";
 
 interface PropsInterface {
   username: string;
 }
 
+function getProfileFieldByKey<ProfileAttributes extends object>(
+  profile: ProfileAttributes,
+  key: keyof ProfileAttributes
+): ProfileAttributes[keyof ProfileAttributes] {
+  return profile[key];
+}
+
+const createProfileDisplay = (profile: ProfileAttributes) => {
+  return (
+    <div className="flex flex-row flex-wrap w-full whitespace-nowrap">
+      <div className="flex flex-col basis-full xs:basis-1/3">
+        <p className="font-semibold text-[color:hsl(var(--stats-text-muted))] basis-1/4 min-w-[100px]">
+          Username:
+        </p>
+        <p>{profile.username || "N/A"}</p>
+      </div>
+      <div className="flex flex-col basis-full xs:basis-1/3">
+        <span className="font-semibold text-[color:hsl(var(--stats-text-muted))] basis-1/4 min-w-[100px]">
+          Game Mode:
+        </span>
+        <span>{profile.gameMode || "N/A"}</span>
+      </div>
+      <div className="flex flex-col basis-full xs:basis-1/3">
+        <span className="font-semibold text-[color:hsl(var(--stats-text-muted))] basis-1/4 min-w-[100px]">
+          Guild:
+        </span>
+        <span>{profile.guildName || "N/A"}</span>
+      </div>
+    </div>
+  );
+};
+
+const createUpgradesDisplay = (profile: ProfileAttributes) => {
+  let upgrades = profile.upgrades;
+
+  const upgradeDisplay = [];
+
+  let upgradeName: keyof UpgradeTiers;
+  for (upgradeName in upgrades) {
+    const upgradeTier = upgrades[upgradeName];
+    let maxUpgrade = upgradeTier;
+    if (upgradeName in fullUpgradeTiers) {
+      maxUpgrade = fullUpgradeTiers[upgradeName];
+    }
+    upgradeDisplay.push({
+      upgradeName: upgradeName,
+      upgradeTier: upgradeTier,
+      maxUpgrade: maxUpgrade,
+    });
+  }
+
+  console.log("upgrades", upgradeDisplay);
+
+  const dummyDisplay = [
+    { upgradeName: "test1", upgradeTier: 1, maxUpgrade: 1 },
+    { upgradeName: "test2", upgradeTier: 1, maxUpgrade: 2 },
+    { upgradeName: "test3", upgradeTier: 5, maxUpgrade: 5 },
+  ];
+
+  return (
+    <div className="rounded-md border-2 border-[color:hsl(var(--combobox-button-primary))]">
+      <Table className="">
+        <TableHeader className="border-b-2 border-[color:hsl(var(--combobox-button-primary))]">
+          <TableRow>
+            <TableHead>Upgrade Name</TableHead>
+            <TableHead>Current Tier</TableHead>
+            <TableHead>Max Tier</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {upgradeDisplay.map((upgrade) => {
+            let upgradeCompleted = "";
+            if (upgrade.upgradeTier === upgrade.maxUpgrade) {
+              upgradeCompleted = "bg-primary";
+            }
+            return (
+              <TableRow
+                key={upgrade.upgradeName}
+                className={upgradeCompleted}
+              >
+                <TableCell>{upgrade.upgradeName}</TableCell>
+                <TableCell>{upgrade.upgradeTier}</TableCell>
+                <TableCell>{upgrade.maxUpgrade}</TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </div>
+  );
+};
+
 export default function CharacterProfile({
   username,
 }: PropsInterface) {
   const [loading, setLoading] = useState(false);
-  const [profile, setProfile] = useState<CharacterProfileInterface>(
-    {} as CharacterProfileInterface
+  const [profile, setProfile] = useState<ProfileAttributes>(
+    {} as ProfileAttributes
   );
-
-  const generateText = (profile: CharacterProfileInterface) => {
-    let profileKey: keyof CharacterProfileInterface;
-
-    let summary: string = "";
-    for (profileKey in profile) {
-      summary = summary + profile[profileKey].toString();
-    }
-    console.log("profileKey", summary, profile);
-
-    return <div>{summary}</div>;
-  };
 
   useEffect(() => {
     if (username?.length) {
       Promise.resolve()
         .then(() => setLoading(true))
         .then(() => getPlayerProfile(username))
-        .then((data: CharacterProfileInterface) => {
+        .then((data: ProfileAttributes) => {
           console.log("data", data);
           setProfile(data);
         })
@@ -46,11 +140,30 @@ export default function CharacterProfile({
   }, [username]);
 
   return (
-    <Card>
-      <CardContent>
-        <h3>Profile</h3>
-        {generateText(profile)}
-      </CardContent>
-    </Card>
+    <div className="flex flex-col gap-2">
+      {loading ? (
+        <LoadingCharacterProfile />
+      ) : (
+        <>
+          <Card>
+            <CardContent>
+              <h3 className="pb-2">Profile</h3>
+              {createProfileDisplay(profile)}
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent>
+              <h3>Upgrades</h3>
+              <div className="pb-2">
+                <DescriptionTextItalics>
+                  Fully completed upgrades are highlighted in purple.
+                </DescriptionTextItalics>
+              </div>
+              {createUpgradesDisplay(profile)}
+            </CardContent>
+          </Card>
+        </>
+      )}
+    </div>
   );
 }
