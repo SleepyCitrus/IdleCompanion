@@ -36,7 +36,7 @@ export interface EquipmentSlots {
   rightHand: number;
 }
 
-export interface BossKills {
+export interface BossClears {
   Chimera: number;
   Devil: number;
   Griffin: number;
@@ -100,7 +100,7 @@ export interface ProfileAttributes {
 
   // e.g. "ShowerWithSocks"
   guildName: string;
-  pvmStats: BossKills;
+  pvmStats: BossClears;
   skillExperiences: SkillAttributes;
   upgrades: UpgradeTiers;
 

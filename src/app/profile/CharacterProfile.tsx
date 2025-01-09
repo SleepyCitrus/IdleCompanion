@@ -18,6 +18,7 @@ import {
   ProfileAttributes,
   UpgradeTiers,
 } from "./ProfileAttributes";
+import PvmStats from "./PvmStats";
 
 interface PropsInterface {
   username: string;
@@ -73,14 +74,6 @@ const createUpgradesDisplay = (profile: ProfileAttributes) => {
       maxUpgrade: maxUpgrade,
     });
   }
-
-  console.log("upgrades", upgradeDisplay);
-
-  const dummyDisplay = [
-    { upgradeName: "test1", upgradeTier: 1, maxUpgrade: 1 },
-    { upgradeName: "test2", upgradeTier: 1, maxUpgrade: 2 },
-    { upgradeName: "test3", upgradeTier: 5, maxUpgrade: 5 },
-  ];
 
   return (
     <div className="rounded-md border-2 border-[color:hsl(var(--combobox-button-primary))]">
@@ -160,6 +153,12 @@ export default function CharacterProfile({
                 </DescriptionTextItalics>
               </div>
               {createUpgradesDisplay(profile)}
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent>
+              <h3>Boss Clears</h3>
+              <PvmStats bossClears={profile.pvmStats}></PvmStats>
             </CardContent>
           </Card>
         </>
