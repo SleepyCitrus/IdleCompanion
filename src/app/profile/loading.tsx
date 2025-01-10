@@ -17,6 +17,9 @@ export default function Loading() {
       <Skeleton className="w-full min-h-[134px]" />
 
       {/* Upgrades */}
+      <Skeleton className="w-full min-h-[155px]" />
+
+      {/* Boss Clears */}
       <Skeleton className="w-full min-h-[131px]" />
     </div>
   );

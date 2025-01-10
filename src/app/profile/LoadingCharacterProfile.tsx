@@ -5,6 +5,7 @@ export const LoadingCharacterProfile = () => {
     <div className="flex flex-row flex-wrap gap-2 w-full">
       <Skeleton className="w-full h-[134px]" />
       <Skeleton className="w-full h-[1671px]" />
+      <Skeleton className="w-full h-[622px]" />
     </div>
   );
 };
