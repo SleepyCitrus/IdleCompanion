@@ -157,7 +157,7 @@ export default function CharacterProfile({
           </Card>
           <Card>
             <CardContent>
-              <h3>Boss Clears</h3>
+              <h3 className="pb-2">Boss Clears</h3>
               <PvmStats bossClears={profile.pvmStats}></PvmStats>
             </CardContent>
           </Card>
